@@ -5,7 +5,7 @@ set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++20")
 
 set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
 
-set(SOURCE_FILES main.cpp game.cpp game.h engine/state.cpp engine/state.h states/game_state.cpp states/game_state.h)
+set(SOURCE_FILES main.cpp game.cpp game.h engine/state.h states/game_state.cpp states/game_state.h engine/state.cpp)
 add_executable(PickupBalls ${SOURCE_FILES})
 include_directories(/usr/local/include)
 

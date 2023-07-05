@@ -1,3 +1,7 @@
+/*
+ *
+ */
+
 #ifndef STATE_H
 #define STATE_H
 
@@ -10,15 +14,28 @@
 namespace eng {
 class State {
 private:
+
+protected:
+    sf::RenderTarget *mWindow;
     std::vector<sf::Texture*> mTextures;
+    bool mQuit{false};
 
 public:
-    State() = default;
+    State(sf::RenderTarget *window = nullptr) : mWindow{window} {}
 
     virtual ~State(){};
 
-    virtual void update() = 0;
-    virtual void render() = 0;
+    /*
+     * Getters
+     */
+    virtual void checkForQuit();
+    [[nodiscard]] bool getQuit() const;
+
+    virtual void endState() = 0;
+
+    virtual void updateKeybinds(float dt) = 0;
+    virtual void update(float dt) = 0;
+    virtual void render(sf::RenderTarget *target = nullptr) = 0;
 };
 }
 

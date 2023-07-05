@@ -61,17 +61,17 @@ build CMakeFiles/PickupBalls.dir/game.cpp.o: CXX_COMPILER__PickupBalls_Debug /ho
   OBJECT_DIR = CMakeFiles/PickupBalls.dir
   OBJECT_FILE_DIR = CMakeFiles/PickupBalls.dir
 
-build CMakeFiles/PickupBalls.dir/engine/state.cpp.o: CXX_COMPILER__PickupBalls_Debug /home/vtallen/Nextcloud/Programming/SFML/RPG/engine/state.cpp || cmake_object_order_depends_target_PickupBalls
-  DEP_FILE = CMakeFiles/PickupBalls.dir/engine/state.cpp.o.d
-  FLAGS = -std=c++20 -g -fdiagnostics-color=always
-  OBJECT_DIR = CMakeFiles/PickupBalls.dir
-  OBJECT_FILE_DIR = CMakeFiles/PickupBalls.dir/engine
-
 build CMakeFiles/PickupBalls.dir/states/game_state.cpp.o: CXX_COMPILER__PickupBalls_Debug /home/vtallen/Nextcloud/Programming/SFML/RPG/states/game_state.cpp || cmake_object_order_depends_target_PickupBalls
   DEP_FILE = CMakeFiles/PickupBalls.dir/states/game_state.cpp.o.d
   FLAGS = -std=c++20 -g -fdiagnostics-color=always
   OBJECT_DIR = CMakeFiles/PickupBalls.dir
   OBJECT_FILE_DIR = CMakeFiles/PickupBalls.dir/states
+
+build CMakeFiles/PickupBalls.dir/engine/state.cpp.o: CXX_COMPILER__PickupBalls_Debug /home/vtallen/Nextcloud/Programming/SFML/RPG/engine/state.cpp || cmake_object_order_depends_target_PickupBalls
+  DEP_FILE = CMakeFiles/PickupBalls.dir/engine/state.cpp.o.d
+  FLAGS = -std=c++20 -g -fdiagnostics-color=always
+  OBJECT_DIR = CMakeFiles/PickupBalls.dir
+  OBJECT_FILE_DIR = CMakeFiles/PickupBalls.dir/engine
 
 
 # =============================================================================
@@ -81,7 +81,7 @@ build CMakeFiles/PickupBalls.dir/states/game_state.cpp.o: CXX_COMPILER__PickupBa
 #############################################
 # Link the executable PickupBalls
 
-build PickupBalls: CXX_EXECUTABLE_LINKER__PickupBalls_Debug CMakeFiles/PickupBalls.dir/main.cpp.o CMakeFiles/PickupBalls.dir/game.cpp.o CMakeFiles/PickupBalls.dir/engine/state.cpp.o CMakeFiles/PickupBalls.dir/states/game_state.cpp.o | /usr/local/lib/libsfml-graphics-d.so.2.6.0 /usr/local/lib/libsfml-audio-d.so.2.6.0 /usr/local/lib/libsfml-network-d.so.2.6.0 /usr/local/lib/libsfml-window-d.so.2.6.0 /usr/local/lib/libsfml-system-d.so.2.6.0
+build PickupBalls: CXX_EXECUTABLE_LINKER__PickupBalls_Debug CMakeFiles/PickupBalls.dir/main.cpp.o CMakeFiles/PickupBalls.dir/game.cpp.o CMakeFiles/PickupBalls.dir/states/game_state.cpp.o CMakeFiles/PickupBalls.dir/engine/state.cpp.o | /usr/local/lib/libsfml-graphics-d.so.2.6.0 /usr/local/lib/libsfml-audio-d.so.2.6.0 /usr/local/lib/libsfml-network-d.so.2.6.0 /usr/local/lib/libsfml-window-d.so.2.6.0 /usr/local/lib/libsfml-system-d.so.2.6.0
   FLAGS = -std=c++20 -g
   LINK_LIBRARIES = -Wl,-rpath,/usr/local/lib  /usr/local/lib/libsfml-graphics-d.so.2.6.0  /usr/local/lib/libsfml-audio-d.so.2.6.0  /usr/local/lib/libsfml-network-d.so.2.6.0  /usr/local/lib/libsfml-window-d.so.2.6.0  /usr/local/lib/libsfml-system-d.so.2.6.0
   OBJECT_DIR = CMakeFiles/PickupBalls.dir

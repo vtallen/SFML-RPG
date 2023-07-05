@@ -7,6 +7,7 @@
 
 Game::Game() {
     initWindow();
+    initStates();
     mDtClock.restart();
 }
 
@@ -45,11 +46,14 @@ void Game::initWindow() {
 }
 
 void Game::initStates() {
-   // mStates.push(new GameState);
+   mStates.push(new GameState(mWindow));
 }
 
 /*
  * Public Functions
+ */
+/*
+ * MAIN LOOP, PROGRAM ENTRY POINT FROM MAIN
  */
 void Game::run() {
     assert(mWindow && "Game::run() - mWindow was nullptr");
@@ -57,7 +61,7 @@ void Game::run() {
         updateDt();
         update();
         render();
-        system("clear");
+        // system("clear");
         std::cout << mDt << '\n';
     }
 }
@@ -65,15 +69,32 @@ void Game::run() {
 /*
  * Private Functions
  */
+/*
+ * Update functions
+ */
 void Game::update() {
     updateSFMLEvents();
+
+    // Update the currently active state (the one on the top of the stack)
+    if (!mStates.empty()) {
+        mStates.top()->update(mDt);
+
+        if (mStates.top()->getQuit()) {
+            mStates.top()->endState();
+            delete mStates.top();
+            mStates.pop();
+        }
+    } else {
+        mWindow->close();
+    }
 }
 
-void Game::render() {
-    assert(mWindow && "Game::render() - mWindow was nullptr");
-    mWindow->clear();
-
-    mWindow->display();
+/*
+ * This function updates the mDt with the time it took to update and render 1 frame
+ */
+void Game::updateDt() {
+    mDt = mDtClock.getElapsedTime().asMicroseconds();
+    mDtClock.restart();
 }
 
 void Game::updateSFMLEvents() {
@@ -88,12 +109,21 @@ void Game::updateSFMLEvents() {
     }
 }
 
-void Game::updateDt() {
-    /*
-     * This function updates the mDt with the time it took to update and render 1 frame
-     */
-    mDt = mDtClock.getElapsedTime().asMicroseconds();
-    mDtClock.restart();
+/*
+ * Render functions
+ */
+void Game::render() {
+    assert(mWindow && "Game::render() - mWindow was nullptr");
+    mWindow->clear();
+
+    // Renders the currently active state (the one on the top of the stack)
+    if (!mStates.empty()) {
+        mStates.top()->render();
+    }
+
+    mWindow->display();
 }
+
+
 
 #pragma clang diagnostic pop
