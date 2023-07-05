@@ -4,6 +4,8 @@
 #include <SFML/Graphics.hpp>
 
 #include <vector>
+#include <stack>
+#include <map>
 
 namespace eng {
 class State {
@@ -12,7 +14,8 @@ private:
 
 public:
     State() = default;
-    virtual ~State() = 0;
+
+    virtual ~State(){};
 
     virtual void update() = 0;
     virtual void render() = 0;

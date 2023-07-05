@@ -12,6 +12,11 @@ Game::Game() {
 
 Game::~Game() {
     delete mWindow;
+    while (!mStates.empty()) {
+        delete mStates.top();
+        mStates.pop();
+    }
+
 }
 
 /*
@@ -37,6 +42,10 @@ void Game::initWindow() {
     mWindow = new sf::RenderWindow{windowBounds, title, sf::Style::Close | sf::Style::Titlebar};
     mWindow->setFramerateLimit(framerateLimit);
     mWindow->setVerticalSyncEnabled(vSyncEnabled);
+}
+
+void Game::initStates() {
+   // mStates.push(new GameState);
 }
 
 /*

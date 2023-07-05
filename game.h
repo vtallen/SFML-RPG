@@ -7,6 +7,9 @@
 #include <fstream>
 #include <sstream>
 
+#include "engine/state.h"
+#include "states/game_state.h"
+
 class Game {
 private:
     /*
@@ -21,7 +24,7 @@ private:
     sf::Clock mDtClock;
     float mDt{};
 
-
+    std::stack<eng::State*> mStates;
     /*
      * Update / Render Functions
      */
@@ -38,6 +41,7 @@ private:
      * Init Functions
      */
     void initWindow();
+    void initStates();
 
 public:
     /*
