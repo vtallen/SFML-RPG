@@ -18,5 +18,10 @@
   "directory": "/home/vtallen/Nextcloud/Programming/SFML/RPG/cmake-build-debug",
   "command": "/usr/bin/c++  -std=c++20 -g -fdiagnostics-color=always -o CMakeFiles/PickupBalls.dir/engine/state.cpp.o -c /home/vtallen/Nextcloud/Programming/SFML/RPG/engine/state.cpp",
   "file": "/home/vtallen/Nextcloud/Programming/SFML/RPG/engine/state.cpp"
+},
+{
+  "directory": "/home/vtallen/Nextcloud/Programming/SFML/RPG/cmake-build-debug",
+  "command": "/usr/bin/c++  -std=c++20 -g -fdiagnostics-color=always -o CMakeFiles/PickupBalls.dir/engine/entity.cpp.o -c /home/vtallen/Nextcloud/Programming/SFML/RPG/engine/entity.cpp",
+  "file": "/home/vtallen/Nextcloud/Programming/SFML/RPG/engine/entity.cpp"
 }
 ]

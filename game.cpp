@@ -93,7 +93,7 @@ void Game::update() {
  * This function updates the mDt with the time it took to update and render 1 frame
  */
 void Game::updateDt() {
-    mDt = mDtClock.getElapsedTime().asMicroseconds();
+    mDt = mDtClock.getElapsedTime().asSeconds();
     mDtClock.restart();
 }
 

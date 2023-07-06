@@ -1,7 +1,3 @@
-/*
- *
- */
-
 #ifndef STATE_H
 #define STATE_H
 
@@ -10,6 +6,8 @@
 #include <vector>
 #include <stack>
 #include <map>
+
+#include "entity.h"
 
 namespace eng {
 class State {
@@ -33,7 +31,7 @@ public:
 
     virtual void endState() = 0;
 
-    virtual void updateKeybinds(float dt) = 0;
+    virtual void updateInput(float dt) = 0;
     virtual void update(float dt) = 0;
     virtual void render(sf::RenderTarget *target = nullptr) = 0;
 };

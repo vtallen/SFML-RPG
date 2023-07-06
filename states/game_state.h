@@ -10,10 +10,11 @@
 #include <iostream>
 
 #include "../engine/state.h"
+#include "../engine/entity.h"
 
 class GameState : public eng::State {
 private:
-
+    eng::Entity mPlayer;
 public:
     GameState(sf::RenderTarget *window = nullptr);
     ~GameState() override;
@@ -21,7 +22,7 @@ public:
     // Do any cleanup needed for the state
     void endState() override;
 
-    void updateKeybinds(float dt) override;
+    void updateInput(float dt) override;
 
     void update(float dt) override;
     void render(sf::RenderTarget *target = nullptr) override;
