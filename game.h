@@ -6,6 +6,8 @@
 #include <iostream>
 #include <fstream>
 #include <sstream>
+#include <string>
+#include <map>
 
 #include "engine/state.h"
 #include "states/game_state.h"
@@ -20,11 +22,14 @@ private:
 
     sf::Event mEv{};
 
+    std::stack<eng::State*> mStates;
+
     // Delta time variables
     sf::Clock mDtClock;
     float mDt{};
 
-    std::stack<eng::State*> mStates;
+    // Keybindings
+    std::map<std::string, int> mSupportedKeybinds;
     /*
      * Update / Render Functions
      */
@@ -37,11 +42,13 @@ private:
     // Updates the delta time
     void updateDt();
 
+
     /*
      * Init Functions
      */
     void initWindow();
     void initStates();
+    void initKeys();
 
 public:
     /*

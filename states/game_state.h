@@ -8,6 +8,8 @@
 
 #include <cassert>
 #include <iostream>
+#include <string>
+#include <map>
 
 #include "../engine/state.h"
 #include "../engine/entity.h"
@@ -16,7 +18,7 @@ class GameState : public eng::State {
 private:
     eng::Entity mPlayer;
 public:
-    GameState(sf::RenderTarget *window = nullptr);
+    GameState(sf::RenderTarget *window, std::map<std::string, int> *supportedKeys);
     ~GameState() override;
 
     // Do any cleanup needed for the state

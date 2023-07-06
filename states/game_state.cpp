@@ -1,6 +1,6 @@
 #include "game_state.h"
 
-GameState::GameState(sf::RenderTarget *window) : State{window} {
+GameState::GameState(sf::RenderTarget *window, std::map<std::string, int> *supportedKeys) : State{window, supportedKeys} {
 
 }
 

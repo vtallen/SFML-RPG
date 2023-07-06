@@ -18,8 +18,12 @@ protected:
     std::vector<sf::Texture*> mTextures;
     bool mQuit{false};
 
+    std::map<std::string, int> *mSupportedKeys;
+
 public:
-    State(sf::RenderTarget *window = nullptr) : mWindow{window} {}
+    State(sf::RenderTarget *window, std::map<std::string, int> *supportedKeys);
+
+    State(sf::RenderTarget *mWindow, std::map<std::string, int> *mSupportedKeys);
 
     virtual ~State(){};
 
@@ -29,6 +33,12 @@ public:
     virtual void checkForQuit();
     [[nodiscard]] bool getQuit() const;
 
+
+    /*
+     * Functions
+     */
+
+    // Does any cleanup needed by the state such as saving
     virtual void endState() = 0;
 
     virtual void updateInput(float dt) = 0;
