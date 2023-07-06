@@ -7,8 +7,8 @@
 
 Game::Game() {
     initWindow();
-    initStates();
     initKeys();
+    initStates();
     mDtClock.restart();
 }
 
@@ -47,17 +47,15 @@ void Game::initWindow() {
 }
 
 void Game::initStates() {
-   mStates.push(new GameState(mWindow, &mSupportedKeybinds));
+   mStates.push(new GameState(mWindow, &mSupportedKeys));
 }
 
 void Game::initKeys() {
-    mSupportedKeybinds.emplace("ESC", sf::Keyboard::Key::Escape);
-    mSupportedKeybinds.emplace("W", sf::Keyboard::Key::W);
-    mSupportedKeybinds.emplace("A", sf::Keyboard::Key::A);
-    mSupportedKeybinds.emplace("S", sf::Keyboard::Key::S);
-    mSupportedKeybinds.emplace("D", sf::Keyboard::Key::D);
-
-    std::cout << mSupportedKeybinds.at("A") << '\n';
+    mSupportedKeys.emplace("ESC", sf::Keyboard::Key::Escape);
+    mSupportedKeys.emplace("W", sf::Keyboard::Key::W);
+    mSupportedKeys.emplace("A", sf::Keyboard::Key::A);
+    mSupportedKeys.emplace("S", sf::Keyboard::Key::S);
+    mSupportedKeys.emplace("D", sf::Keyboard::Key::D);
 }
 
 /*

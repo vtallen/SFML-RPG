@@ -29,7 +29,7 @@ private:
     float mDt{};
 
     // Keybindings
-    std::map<std::string, int> mSupportedKeybinds;
+    std::map<std::string, int> mSupportedKeys;
     /*
      * Update / Render Functions
      */

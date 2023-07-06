@@ -1,3 +1,12 @@
+/*
+ * States are scenes that contain some sort of game content. Ex. Main menu, main game, inside of a game building
+ *
+ * They can be initialized with a pointer to a sf::RenderTarget and a map of supported keys
+ * This class does not take ownership of the window, and will not delete it
+ *
+ * If nullptr is passed in for window, it can be instead passed into the render() function.
+ */
+
 #ifndef STATE_H
 #define STATE_H
 
@@ -18,12 +27,14 @@ protected:
     std::vector<sf::Texture*> mTextures;
     bool mQuit{false};
 
+    // resources
     std::map<std::string, int> *mSupportedKeys;
+    std::map<std::string, int> mKeybinds;
 
+    // Functions
+    virtual void initKeybinds() = 0;
 public:
     State(sf::RenderTarget *window, std::map<std::string, int> *supportedKeys);
-
-    State(sf::RenderTarget *mWindow, std::map<std::string, int> *mSupportedKeys);
 
     virtual ~State(){};
 
@@ -39,6 +50,7 @@ public:
      */
 
     // Does any cleanup needed by the state such as saving
+    // This should be called before a state is deleted
     virtual void endState() = 0;
 
     virtual void updateInput(float dt) = 0;

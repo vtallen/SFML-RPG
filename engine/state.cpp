@@ -2,9 +2,10 @@
 
 namespace eng {
 
-State::State(sf::RenderTarget *mWindow, std::map<std::string, int> *mSupportedKeys) : mWindow(mWindow),
-                                                                                      mSupportedKeys(mSupportedKeys) {
+State::State(sf::RenderTarget *mWindow, std::map<std::string, int> *supportedKeys) : mWindow{mWindow},
+                                                                                          mSupportedKeys{supportedKeys}{
 }
+
 void State::checkForQuit() {
     if (sf::Keyboard::isKeyPressed(sf::Keyboard::Escape)) mQuit = true;
 }

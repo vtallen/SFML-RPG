@@ -17,6 +17,14 @@
 class GameState : public eng::State {
 private:
     eng::Entity mPlayer;
+
+    /*
+     * Update functions
+     */
+    void updateInput(float dt) override;
+
+    void initKeybinds() override;
+
 public:
     GameState(sf::RenderTarget *window, std::map<std::string, int> *supportedKeys);
     ~GameState() override;
@@ -24,7 +32,6 @@ public:
     // Do any cleanup needed for the state
     void endState() override;
 
-    void updateInput(float dt) override;
 
     void update(float dt) override;
     void render(sf::RenderTarget *target = nullptr) override;
