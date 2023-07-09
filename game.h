@@ -11,6 +11,7 @@
 
 #include "engine/state.h"
 #include "states/game_state.h"
+#include "states/main_menu_state.h"
 
 class Game {
 private:

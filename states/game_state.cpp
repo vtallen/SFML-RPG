@@ -1,6 +1,6 @@
 #include "game_state.h"
 
-GameState::GameState(sf::RenderTarget *window, std::map<std::string, int> *supportedKeys) : State{window, supportedKeys} {
+GameState::GameState(sf::RenderWindow *window, std::map<std::string, int> *supportedKeys) : State{window, supportedKeys} {
     initKeybinds();
 }
 
@@ -10,10 +10,24 @@ GameState::~GameState() {
 
 void GameState::initKeybinds() {
     assert(mSupportedKeys && "GameState::initKeybinds - mSupportedKeys was nullptr");
-    mKeybinds.emplace("MOVE_UP", mSupportedKeys->at("W"));
-    mKeybinds.emplace("MOVE_LEFT", mSupportedKeys->at("A"));
-    mKeybinds.emplace("MOVE_DOWN", mSupportedKeys->at("S"));
-    mKeybinds.emplace("MOVE_RIGHT", mSupportedKeys->at("D"));
+
+    // Here we are mapping an action to a key, this allows us to change the key for the action in the future.
+    std::ifstream ifs{"../config/gamestate_keybinds.ini"};
+
+    if (ifs.is_open()) {
+        std::string action{};
+        std::string key{};
+
+        while (ifs >> action >> key) {
+            mKeybinds[action] = mSupportedKeys->at(key);
+        }
+
+    } else {
+
+        std::cout << "Game::initKeys() - Unable to open config/supported_keys.ini\n";
+    }
+
+    ifs.close();
 }
 
 void GameState::endState() {
@@ -38,12 +52,12 @@ void GameState::updateInput(const float dt) {
 
 void GameState::update(const float dt) {
     updateInput(dt);
+    updateMousePositions();
     mPlayer.update(dt);
 }
 
-void GameState::render(sf::RenderTarget *target) {
-    assert(!(target && mWindow) && "GameState::render() - Both mWindow and target are nullptr. Did you forget to set mWindow or pass in a target to render()?");
-    target = (target == nullptr) ? mWindow : target;
+void GameState::render() {
+    assert(mWindow && "GameState::render() - Both mWindow and target are nullptr. Did you forget to set mWindow or pass in a target to render()?");
 
     mPlayer.render(mWindow);
 }

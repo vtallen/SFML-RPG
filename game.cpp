@@ -47,15 +47,27 @@ void Game::initWindow() {
 }
 
 void Game::initStates() {
-   mStates.push(new GameState(mWindow, &mSupportedKeys));
+    mStates.push(new MainMenuState(mWindow, &mSupportedKeys));
+   // mStates.push(new GameState(mWindow, &mSupportedKeys));
 }
 
 void Game::initKeys() {
-    mSupportedKeys.emplace("ESC", sf::Keyboard::Key::Escape);
-    mSupportedKeys.emplace("W", sf::Keyboard::Key::W);
-    mSupportedKeys.emplace("A", sf::Keyboard::Key::A);
-    mSupportedKeys.emplace("S", sf::Keyboard::Key::S);
-    mSupportedKeys.emplace("D", sf::Keyboard::Key::D);
+    // Here we are creating a mapping of strings to the correct key in the sf::Keyboard::Key enum.
+    std::ifstream ifs{"../config/supported_keys.ini"};
+
+    if (ifs.is_open()) {
+        std::string key{};
+        int keyValue{};
+
+        while (ifs >> key >> keyValue) {
+            mSupportedKeys[key] = keyValue;
+        }
+
+    } else {
+        std::cout << "Game::initKeys() - Unable to open config/supported_keys.ini\n";
+    }
+
+    ifs.close();
 }
 
 /*

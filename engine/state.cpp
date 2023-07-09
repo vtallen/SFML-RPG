@@ -2,14 +2,20 @@
 
 namespace eng {
 
-State::State(sf::RenderTarget *mWindow, std::map<std::string, int> *supportedKeys) : mWindow{mWindow},
+State::State(sf::RenderWindow *mWindow, std::map<std::string, int> *supportedKeys) : mWindow{mWindow},
                                                                                           mSupportedKeys{supportedKeys}{
 }
 
 void State::checkForQuit() {
-    if (sf::Keyboard::isKeyPressed(sf::Keyboard::Escape)) mQuit = true;
+    if (sf::Keyboard::isKeyPressed(sf::Keyboard::Key(mKeybinds.at("CLOSE")))) mQuit = true;
 }
 
 bool State::getQuit() const { return mQuit; }
 
+void State::updateMousePositions() {
+    assert(mWindow && "State::updateMousePositions() - mWindow was nullptr");
+    mMousePosScreen = sf::Mouse::getPosition();
+    mMousePosWindow = sf::Mouse::getPosition(*mWindow);
+    mMousePosView = mWindow->mapPixelToCoords(sf::Mouse::getPosition(*mWindow));
+}
 }

@@ -8,6 +8,7 @@
 
 #include <cassert>
 #include <iostream>
+#include <fstream>
 #include <string>
 #include <map>
 
@@ -26,7 +27,7 @@ private:
     void initKeybinds() override;
 
 public:
-    GameState(sf::RenderTarget *window, std::map<std::string, int> *supportedKeys);
+    GameState(sf::RenderWindow *window, std::map<std::string, int> *supportedKeys);
     ~GameState() override;
 
     // Do any cleanup needed for the state
@@ -34,7 +35,7 @@ public:
 
 
     void update(float dt) override;
-    void render(sf::RenderTarget *target = nullptr) override;
+    void render() override;
 };
 
 #endif

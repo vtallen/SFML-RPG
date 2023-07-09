@@ -23,9 +23,14 @@ class State {
 private:
 
 protected:
-    sf::RenderTarget *mWindow;
+    sf::RenderWindow *mWindow;
     std::vector<sf::Texture*> mTextures;
     bool mQuit{false};
+
+    // Mouse position
+    sf::Vector2i mMousePosScreen;
+    sf::Vector2i mMousePosWindow;
+    sf::Vector2f  mMousePosView;
 
     // resources
     std::map<std::string, int> *mSupportedKeys;
@@ -34,7 +39,7 @@ protected:
     // Functions
     virtual void initKeybinds() = 0;
 public:
-    State(sf::RenderTarget *window, std::map<std::string, int> *supportedKeys);
+    State(sf::RenderWindow *window, std::map<std::string, int> *supportedKeys);
 
     virtual ~State(){};
 
@@ -53,9 +58,11 @@ public:
     // This should be called before a state is deleted
     virtual void endState() = 0;
 
+    virtual void updateMousePositions();
+
     virtual void updateInput(float dt) = 0;
     virtual void update(float dt) = 0;
-    virtual void render(sf::RenderTarget *target = nullptr) = 0;
+    virtual void render() = 0;
 };
 }
 
