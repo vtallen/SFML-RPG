@@ -5,6 +5,7 @@
 #include <cassert>
 
 #include "../engine/state.h"
+#include "../engine/button.h"
 
 class MainMenuState : public eng::State {
 private:
@@ -14,6 +15,9 @@ private:
 
     sf::RectangleShape mBackground;
     sf::Font mFont;
+
+    gui::Button *btn;
+
 
     /*
      * Init functions

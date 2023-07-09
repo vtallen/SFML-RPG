@@ -6,11 +6,11 @@ MainMenuState::MainMenuState(sf::RenderWindow *window, std::map<std::string, int
     mBackground.setFillColor(sf::Color::Magenta);
 
     initFonts();
-
+    btn = new gui::Button{10.f, 10.f, 200.f, 50.f, &mFont, "New Game", sf::Color::Green, sf::Color::Blue, sf::Color::Red};
 }
 
 MainMenuState::~MainMenuState() {
-
+    delete btn;
 }
 
 void MainMenuState::initKeybinds() {
@@ -39,6 +39,7 @@ void MainMenuState::updateInput(float dt) {
 void MainMenuState::update(float dt) {
     updateMousePositions();
     updateInput(dt);
+    btn->update(mMousePosView);
 
     std::cout << mMousePosView.x << " " << mMousePosView.y << '\n';
 }
@@ -46,6 +47,7 @@ void MainMenuState::update(float dt) {
 void MainMenuState::render() {
     assert(mWindow && "MainMenuState::render() - mWindow was nullptr");
     mWindow->draw(mBackground);
+    btn->render(mWindow);
 }
 
 
