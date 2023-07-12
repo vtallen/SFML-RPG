@@ -15,14 +15,19 @@
 #include <vector>
 #include <stack>
 #include <map>
+#include <stack>
 
 #include "entity.h"
 
+
+
+
 namespace eng {
 class State {
-private:
-
 protected:
+
+    std::stack<State*> *mStates;
+
     sf::RenderWindow *mWindow;
     std::vector<sf::Texture*> mTextures;
     bool mQuit{false};
@@ -39,7 +44,7 @@ protected:
     // Functions
     virtual void initKeybinds() = 0;
 public:
-    State(sf::RenderWindow *window, std::map<std::string, int> *supportedKeys);
+    State(sf::RenderWindow *window, std::map<std::string, int> *supportedKeys, std::stack<State*> *states);
 
     virtual ~State(){};
 

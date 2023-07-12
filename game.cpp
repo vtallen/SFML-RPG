@@ -15,6 +15,7 @@ Game::Game() {
 Game::~Game() {
     delete mWindow;
     while (!mStates.empty()) {
+        mStates.top()->endState();
         delete mStates.top();
         mStates.pop();
     }
@@ -47,7 +48,7 @@ void Game::initWindow() {
 }
 
 void Game::initStates() {
-    mStates.push(new MainMenuState(mWindow, &mSupportedKeys));
+    mStates.push(new MainMenuState(mWindow, &mSupportedKeys, &mStates));
    // mStates.push(new GameState(mWindow, &mSupportedKeys));
 }
 

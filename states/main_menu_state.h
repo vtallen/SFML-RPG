@@ -3,9 +3,16 @@
 
 #include <iostream>
 #include <cassert>
+#include <exception>
+#include <map>
+#include <string>
+#include <stack>
+#include <fstream>
 
 #include "../engine/state.h"
 #include "../engine/button.h"
+
+#include "../states/game_state.h"
 
 class MainMenuState : public eng::State {
 private:
@@ -16,19 +23,21 @@ private:
     sf::RectangleShape mBackground;
     sf::Font mFont;
 
-    gui::Button *btn;
+    std::map<std::string, gui::Button*> mButtons;
 
+public:
+    MainMenuState(sf::RenderWindow *window, std::map<std::string, int> *supportedKeys, std::stack<State*> *states);
+    ~MainMenuState() override;
 
+private:
     /*
      * Init functions
      */
     void initKeybinds() override;
     void initFonts();
+    void initButtons();
 
 public:
-    MainMenuState(sf::RenderWindow *window, std::map<std::string, int> *supportedKeys);
-    ~MainMenuState() override;
-
     /*
      * Getters
      */
@@ -37,6 +46,7 @@ public:
 
 
     void updateInput(float dt) override;
+    void updateButtons();
     void update(float dt) override;
     void render() override;
 

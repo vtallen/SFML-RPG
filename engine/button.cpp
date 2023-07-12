@@ -21,8 +21,8 @@ Button::Button(float x, float y, float width, float height, sf::Font *font, std:
     mText.setFillColor(sf::Color::White);
     mText.setCharacterSize(20);
 
-    mText.setPosition((mShape.getPosition().x / 2.f) + (mText.getGlobalBounds().width / 2.f),
-                      (mShape.getPosition().y / 2.f) + (mText.getGlobalBounds().height));
+    mText.setPosition((mShape.getPosition().x) + (mShape.getSize().x - mText.getGlobalBounds().width) / 2.f,
+                      (mShape.getPosition().y) + (mShape.getSize().y - mText.getGlobalBounds().height) / 2.5);
 
 }
 
