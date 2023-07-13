@@ -12,7 +12,6 @@ class Entity {
 private:
 
 protected:
-    sf::Texture *mTexture{nullptr};
     sf::Sprite *mSprite{nullptr};
 
     MovementComponent *mMovementComponent{nullptr};
@@ -28,7 +27,7 @@ public:
     /*
      * Component Functions
      */
-    virtual void createSprite(sf::Texture *texture);
+    virtual void setTexture(sf::Texture &texture);
     virtual void createMovementComponent(float maxVelocity);
 
     /*

@@ -4,7 +4,7 @@ namespace eng {
 /*
  * Constructors / Destructors
  */
-Entity::Entity() {
+Entity::Entity() : mSprite{new sf::Sprite} {
     mMovementSpeed = 100.f;
 }
 
@@ -16,16 +16,14 @@ Entity::~Entity() {
 /*
  * Component Functions
  */
-void Entity::createSprite(sf::Texture *texture) {
-    assert(texture && "Entity::createSprite - texture was nullptr");
-
-    mSprite = new sf::Sprite{};
-    mTexture = texture;
-    mSprite->setTexture(*mTexture);
+void Entity::setTexture(sf::Texture &texture) {
+    mSprite->setTexture(texture);
 }
 
 void Entity::createMovementComponent(float maxVelocity) {
-    mMovementComponent = new MovementComponent(maxVelocity);
+    assert(mSprite && "Entity::createMovementComponent - mSprite was nullptr");
+
+    mMovementComponent = new MovementComponent(*mSprite, maxVelocity);
 }
 
 /*
@@ -42,9 +40,8 @@ void Entity::setPosition(const sf::Vector2f position) {
 }
 
 void Entity::move(const float dt, const float dirX, const float dirY) {
-    if (mSprite && mMovementComponent) {
-        mMovementComponent->move(dirX, dirY); // Set velocity
-        mSprite->move(mMovementComponent->getVelocity() * dt); // Uses velocity
+    if (mMovementComponent) {
+        mMovementComponent->move(dirX, dirY, dt); // Set velocity
     }
 }
 
@@ -54,8 +51,6 @@ void Entity::update(const float dt) {
 void Entity::render(sf::RenderTarget *target) {
     assert((target) && "Entity::render() - target was nullptr");
 
-    if (mSprite) {
-        target->draw(*mSprite);
-    }
+    target->draw(*mSprite);
 }
 }

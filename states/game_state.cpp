@@ -9,7 +9,8 @@ GameState::GameState(sf::RenderWindow *window, std::map<std::string, int> *suppo
     GameState::initKeybinds();
     initTextures();
 
-    mPlayer = new Player{10, 10, mTextures["PLAYER_IDLE"]};
+    assert(mTextures["PLAYER_IDLE"] && "GameState::GameState - PLAYER_IDLE sf::Texture is nullptr in mTextures");
+    mPlayer = new Player{10, 10, *mTextures["PLAYER_IDLE"]};
 
 }
 

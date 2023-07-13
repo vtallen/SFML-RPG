@@ -3,8 +3,8 @@
 /*
  * Constructors / Destructors
  */
-Player::Player(const float x, const float y, sf::Texture *texture) {
-    Entity::createSprite(texture);
+Player::Player(const float x, const float y, sf::Texture &texture) {
+    Entity::setTexture(texture);
     Entity::setPosition(x, y);
 
     initComponents();
