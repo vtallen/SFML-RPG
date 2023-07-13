@@ -12,11 +12,13 @@ State::State(sf::RenderWindow *window, std::map<std::string, int> *supportedKeys
     assert(states && "State::State() - states was nullptr");
 }
 
-void State::checkForQuit() {
-    if (sf::Keyboard::isKeyPressed(sf::Keyboard::Key(mKeybinds.at("CLOSE")))) mQuit = true;
-}
 
 bool State::getQuit() const { return mQuit; }
+
+void State::endState() {
+    std::cout << "State::endState() called\n";
+    mQuit = true;
+}
 
 void State::updateMousePositions() {
     assert(mWindow && "State::updateMousePositions() - mWindow was nullptr");

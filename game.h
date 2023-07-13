@@ -19,7 +19,10 @@ private:
      * Variables
      */
     // Window variables
-    sf::RenderWindow *mWindow{};
+    sf::RenderWindow *mWindow{nullptr};
+    std::vector<sf::VideoMode> mVideoModes;
+    sf::ContextSettings mWindowSettings;
+    bool mIsFullscreen{false};
 
     sf::Event mEv{};
 
@@ -27,7 +30,7 @@ private:
 
     // Delta time variables
     sf::Clock mDtClock;
-    float mDt{};
+    float mDt{0.f};
 
     // Keybindings
     std::map<std::string, int> mSupportedKeys;
@@ -42,7 +45,6 @@ private:
 
     // Updates the delta time
     void updateDt();
-
 
     /*
      * Init Functions

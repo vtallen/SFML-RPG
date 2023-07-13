@@ -33,5 +33,10 @@
   "directory": "/home/vtallen/Nextcloud/Programming/SFML/RPG/cmake-build-debug",
   "command": "/usr/bin/c++  -std=c++20 -g -fdiagnostics-color=always -o CMakeFiles/RPG_ENGINE.dir/engine/button.cpp.o -c /home/vtallen/Nextcloud/Programming/SFML/RPG/engine/button.cpp",
   "file": "/home/vtallen/Nextcloud/Programming/SFML/RPG/engine/button.cpp"
+},
+{
+  "directory": "/home/vtallen/Nextcloud/Programming/SFML/RPG/cmake-build-debug",
+  "command": "/usr/bin/c++  -std=c++20 -g -fdiagnostics-color=always -o CMakeFiles/RPG_ENGINE.dir/entities/player.cpp.o -c /home/vtallen/Nextcloud/Programming/SFML/RPG/entities/player.cpp",
+  "file": "/home/vtallen/Nextcloud/Programming/SFML/RPG/entities/player.cpp"
 }
 ]

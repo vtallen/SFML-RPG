@@ -27,22 +27,33 @@ Game::~Game() {
  */
 void Game::initWindow() {
     std::ifstream ifs("../config/window.ini");
+    mVideoModes = sf::VideoMode::getFullscreenModes();
 
-    sf::VideoMode windowBounds{800, 600};
+    sf::VideoMode windowBounds{sf::VideoMode::getDesktopMode()};
     std::string title{"none"};
+
     unsigned int framerateLimit{120};
     bool vSyncEnabled{false};
-
+    unsigned int antiAliasingLevel{0};
     if (ifs.is_open()) {
         std::getline(ifs, title);
         ifs >> windowBounds.width >> windowBounds.height;
+        ifs >> mIsFullscreen;
         ifs >> framerateLimit;
         ifs >> vSyncEnabled;
+        ifs >> antiAliasingLevel;
     }
 
     ifs.close();
 
-    mWindow = new sf::RenderWindow{windowBounds, title, sf::Style::Close | sf::Style::Titlebar};
+    mWindowSettings.antialiasingLevel = antiAliasingLevel;
+
+    if (mIsFullscreen) {
+        mWindow = new sf::RenderWindow{windowBounds, title, sf::Style::Fullscreen, mWindowSettings};
+    } else {
+        mWindow = new sf::RenderWindow{windowBounds, title, sf::Style::Close | sf::Style::Titlebar, mWindowSettings};
+    }
+
     mWindow->setFramerateLimit(framerateLimit);
     mWindow->setVerticalSyncEnabled(vSyncEnabled);
 }
@@ -102,7 +113,6 @@ void Game::update() {
         mStates.top()->update(mDt);
 
         if (mStates.top()->getQuit()) {
-            mStates.top()->endState();
             delete mStates.top();
             mStates.pop();
         }
@@ -135,11 +145,13 @@ void Game::updateSFMLEvents() {
  * Render functions
  */
 void Game::render() {
+    std::string testStr{"test"};
     assert(mWindow && "Game::render() - mWindow was nullptr");
     mWindow->clear();
 
     // Renders the currently active state (the one on the top of the stack)
     if (!mStates.empty()) {
+
         mStates.top()->render();
     }
 

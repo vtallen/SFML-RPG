@@ -4,12 +4,11 @@ MainMenuState::MainMenuState(sf::RenderWindow *window, std::map<std::string, int
     State{window,supportedKeys,states} {
 
     assert(window && "MainMenuState::MainMenuState() - window was passed in as nullptr");
-    mBackground.setSize(sf::Vector2f(window->getSize().x, window->getSize().y));
-    mBackground.setFillColor(sf::Color::Magenta);
 
     initFonts();
-    initKeybinds();
+    MainMenuState::initKeybinds();
     initButtons();
+    initBackground();
 }
 
 MainMenuState::~MainMenuState() {
@@ -57,12 +56,17 @@ void MainMenuState::initButtons() {
                                                  sf::Color(70, 70, 70, 255));
 }
 
-void MainMenuState::checkForQuit() {
-    State::checkForQuit();
+void MainMenuState::initBackground() {
+    assert(mWindow && "MainMenuState::initBackground() - mWindow was nullptr");
+
+    mBackground.setSize(sf::Vector2f(static_cast<float>(mWindow->getSize().x), static_cast<float>(mWindow->getSize().y)));
+    mBackgroundTexture.loadFromFile("../textures/bg.jpg");
+    mBackground.setTexture(&mBackgroundTexture);
 }
 
 void MainMenuState::endState() {
-    std::cout << "MainMenuState::endState()\n";
+    std::cout << "MainMenuState::endState() called\n";
+    State::endState();
 }
 
 void MainMenuState::updateInput(float dt) {
@@ -82,7 +86,6 @@ void MainMenuState::updateButtons() {
     }
 
     if (mButtons["EXIT"]->isPressed()) {
-     mQuit = true;
      endState();
     }
 }
@@ -92,15 +95,19 @@ void MainMenuState::update(float dt) {
     updateInput(dt);
 
     updateButtons();
-    checkForQuit();
-    std::cout << mMousePosView.x << " " << mMousePosView.y << '\n';
-
 }
 
 void MainMenuState::render() {
     assert(mWindow && "MainMenuState::render() - mWindow was nullptr");
     mWindow->draw(mBackground);
     for (auto &button : mButtons) button.second->render(mWindow);
+
+    sf::Text mouseText;
+    mouseText.setPosition(mMousePosView);
+    mouseText.setFont(mFont);
+    mouseText.setCharacterSize(30);
+    mouseText.setString(std::to_string(mMousePosView.x) + ", " + std::to_string(mMousePosView.y));
+    mWindow->draw(mouseText);
 }
 
 

@@ -1,15 +1,28 @@
 #include "game_state.h"
 
-GameState::GameState(sf::RenderWindow *window, std::map<std::string, int> *supportedKeys, std::stack<State*> *states) :
-    State{window, supportedKeys, states} {
+/*
+ * Constructors / Destructors
+ */
+GameState::GameState(sf::RenderWindow *window, std::map<std::string, int> *supportedKeys, std::stack<State *> *states) :
+        State{window, supportedKeys, states} {
 
-    initKeybinds();
+    GameState::initKeybinds();
+    initTextures();
+
+    mPlayer = new Player{10, 10, mTextures["PLAYER_IDLE"]};
+
 }
 
 GameState::~GameState() {
-
+    delete mPlayer;
+    for (auto &texture : mTextures) {
+        delete texture.second;
+    }
 }
 
+/*
+ * Init functions
+ */
 void GameState::initKeybinds() {
     assert(mSupportedKeys && "GameState::initKeybinds - mSupportedKeys was nullptr");
 
@@ -25,41 +38,51 @@ void GameState::initKeybinds() {
         }
 
     } else {
-
         std::cout << "Game::initKeys() - Unable to open config/supported_keys.ini\n";
     }
 
     ifs.close();
 }
 
+void GameState::initTextures() {
+    mTextures["PLAYER_IDLE"] = new sf::Texture{};
+    mTextures["PLAYER_IDLE"]->loadFromFile("../textures/player.png");
+}
+
 void GameState::endState() {
     std::cout << "GameState::endState() called\n";
+    State::endState();
 }
 
 void GameState::updateInput(const float dt) {
-    checkForQuit();
+    assert(mPlayer && "GameState::updateInput - mPlayer was nullptr");
 
     if (sf::Keyboard::isKeyPressed(sf::Keyboard::Key(mKeybinds.at("MOVE_LEFT")))) {
-        mPlayer.move(dt, -1.f, 0.f);
+        mPlayer->move(dt, -1.f, 0.f);
     } else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Key(mKeybinds.at("MOVE_RIGHT")))) {
-        mPlayer.move(dt, 1.f, 0.f);
+        mPlayer->move(dt, 1.f, 0.f);
     }
 
     if (sf::Keyboard::isKeyPressed(sf::Keyboard::Key(mKeybinds.at("MOVE_UP")))) {
-        mPlayer.move(dt, 0.f, -1.f);
+        mPlayer->move(dt, 0.f, -1.f);
     } else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Key(mKeybinds.at("MOVE_DOWN")))) {
-        mPlayer.move(dt, 0.f, 1.f);
+        mPlayer->move(dt, 0.f, 1.f);
+    }
+
+    if (sf::Keyboard::isKeyPressed(sf::Keyboard::Key(mKeybinds.at("CLOSE")))) {
+        endState();
     }
 }
 
 void GameState::update(const float dt) {
     updateInput(dt);
     updateMousePositions();
-    mPlayer.update(dt);
+    mPlayer->update(dt);
 }
 
 void GameState::render() {
-    assert(mWindow && "GameState::render() - Both mWindow and target are nullptr. Did you forget to set mWindow or pass in a target to render()?");
+    assert(mWindow &&
+                   "GameState::render() - Both mWindow and target are nullptr. Did you forget to set mWindow or pass in a target to render()?");
 
-    mPlayer.render(mWindow);
+    mPlayer->render(mWindow);
 }

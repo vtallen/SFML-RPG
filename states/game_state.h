@@ -15,18 +15,27 @@
 #include "../engine/state.h"
 #include "../engine/entity.h"
 
+#include "../entities/player.h"
+
 class GameState : public eng::State {
 private:
-    eng::Entity mPlayer;
+    Player *mPlayer;
 
     /*
      * Update functions
      */
     void updateInput(float dt) override;
 
+    /*
+     * Init functions
+     */
     void initKeybinds() override;
+    void initTextures();
 
 public:
+    /*
+     * Constructors / Destructors
+     */
     GameState(sf::RenderWindow *window, std::map<std::string, int> *supportedKeys, std::stack<State*> *states);
     ~GameState() override;
 

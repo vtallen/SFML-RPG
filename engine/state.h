@@ -19,17 +19,13 @@
 
 #include "entity.h"
 
-
-
-
 namespace eng {
 class State {
 protected:
-
     std::stack<State*> *mStates;
 
     sf::RenderWindow *mWindow;
-    std::vector<sf::Texture*> mTextures;
+    std::map<std::string, sf::Texture*> mTextures;
     bool mQuit{false};
 
     // Mouse position
@@ -51,7 +47,6 @@ public:
     /*
      * Getters
      */
-    virtual void checkForQuit();
     [[nodiscard]] bool getQuit() const;
 
 
@@ -61,7 +56,8 @@ public:
 
     // Does any cleanup needed by the state such as saving
     // This should be called before a state is deleted
-    virtual void endState() = 0;
+
+    virtual void endState();
 
     virtual void updateMousePositions();
 

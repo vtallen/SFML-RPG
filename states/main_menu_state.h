@@ -20,6 +20,7 @@ private:
      * Vars
      */
 
+    sf::Texture mBackgroundTexture;
     sf::RectangleShape mBackground;
     sf::Font mFont;
 
@@ -34,6 +35,7 @@ private:
      * Init functions
      */
     void initKeybinds() override;
+    void initBackground();
     void initFonts();
     void initButtons();
 
@@ -41,7 +43,6 @@ public:
     /*
      * Getters
      */
-    void checkForQuit() override;
     void endState() override;
 
 
