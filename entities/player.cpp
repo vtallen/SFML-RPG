@@ -18,7 +18,7 @@ Player::~Player() {
  * Init functions
  */
 void Player::initComponents() {
-
+    Entity::createMovementComponent(100.f);
 }
 
 /*

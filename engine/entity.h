@@ -5,6 +5,8 @@
 #include <cassert>
 #include <iostream>
 
+#include "movement_component.h"
+
 namespace eng {
 class Entity {
 private:
@@ -13,7 +15,9 @@ protected:
     sf::Texture *mTexture{nullptr};
     sf::Sprite *mSprite{nullptr};
 
+    MovementComponent *mMovementComponent{nullptr};
     float mMovementSpeed{};
+
 public:
     /*
      * Constructors / Destructors
@@ -25,6 +29,7 @@ public:
      * Component Functions
      */
     virtual void createSprite(sf::Texture *texture);
+    virtual void createMovementComponent(float maxVelocity);
 
     /*
      * Public functions

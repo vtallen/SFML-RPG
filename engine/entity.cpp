@@ -10,6 +10,7 @@ Entity::Entity() {
 
 Entity::~Entity() {
     delete mSprite;
+    delete mMovementComponent;
 }
 
 /*
@@ -21,6 +22,10 @@ void Entity::createSprite(sf::Texture *texture) {
     mSprite = new sf::Sprite{};
     mTexture = texture;
     mSprite->setTexture(*mTexture);
+}
+
+void Entity::createMovementComponent(float maxVelocity) {
+    mMovementComponent = new MovementComponent(maxVelocity);
 }
 
 /*
@@ -37,8 +42,9 @@ void Entity::setPosition(const sf::Vector2f position) {
 }
 
 void Entity::move(const float dt, const float dirX, const float dirY) {
-    if (mSprite) {
-        mSprite->move(dirX * mMovementSpeed * dt, dirY * mMovementSpeed * dt);
+    if (mSprite && mMovementComponent) {
+        mMovementComponent->move(dirX, dirY); // Set velocity
+        mSprite->move(mMovementComponent->getVelocity() * dt); // Uses velocity
     }
 }
 
