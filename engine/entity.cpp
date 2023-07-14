@@ -20,10 +20,10 @@ void Entity::setTexture(sf::Texture &texture) {
     mSprite->setTexture(texture);
 }
 
-void Entity::createMovementComponent(float maxVelocity) {
+void Entity::createMovementComponent(const float maxVelocity, const float acceleration, const float deceleration) {
     assert(mSprite && "Entity::createMovementComponent - mSprite was nullptr");
 
-    mMovementComponent = new MovementComponent(*mSprite, maxVelocity);
+    mMovementComponent = new MovementComponent(*mSprite, maxVelocity, acceleration, deceleration);
 }
 
 /*
@@ -39,13 +39,16 @@ void Entity::setPosition(const sf::Vector2f position) {
     Entity::setPosition(position.x, position.y);
 }
 
-void Entity::move(const float dt, const float dirX, const float dirY) {
+void Entity::move(const float dirX, const float dirY, const float dt) {
     if (mMovementComponent) {
         mMovementComponent->move(dirX, dirY, dt); // Set velocity
     }
 }
 
 void Entity::update(const float dt) {
+    if (mMovementComponent) {
+        mMovementComponent->update(dt);
+    }
 }
 
 void Entity::render(sf::RenderTarget *target) {

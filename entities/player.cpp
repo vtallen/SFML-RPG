@@ -6,6 +6,8 @@
 Player::Player(const float x, const float y, sf::Texture &texture) {
     Entity::setTexture(texture);
     Entity::setPosition(x, y);
+    mSprite->setTextureRect(sf::IntRect(16.f, 16.f, 16, 32));
+    mSprite->scale(sf::Vector2f(5.f, 5.f));
 
     initComponents();
 }
@@ -18,7 +20,7 @@ Player::~Player() {
  * Init functions
  */
 void Player::initComponents() {
-    Entity::createMovementComponent(100.f);
+    Entity::createMovementComponent(500.f, 1000.f, 1000.f);
 }
 
 /*

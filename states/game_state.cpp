@@ -59,15 +59,15 @@ void GameState::updateInput(const float dt) {
     assert(mPlayer && "GameState::updateInput - mPlayer was nullptr");
 
     if (sf::Keyboard::isKeyPressed(sf::Keyboard::Key(mKeybinds.at("MOVE_LEFT")))) {
-        mPlayer->move(dt, -1.f, 0.f);
+        mPlayer->move(-1.f, 0.f, dt);
     } else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Key(mKeybinds.at("MOVE_RIGHT")))) {
-        mPlayer->move(dt, 1.f, 0.f);
+        mPlayer->move(1.f, 0.f, dt);
     }
 
     if (sf::Keyboard::isKeyPressed(sf::Keyboard::Key(mKeybinds.at("MOVE_UP")))) {
-        mPlayer->move(dt, 0.f, -1.f);
+        mPlayer->move(0.f, -1.f, dt);
     } else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Key(mKeybinds.at("MOVE_DOWN")))) {
-        mPlayer->move(dt, 0.f, 1.f);
+        mPlayer->move(0.f, 1.f, dt);
     }
 
     if (sf::Keyboard::isKeyPressed(sf::Keyboard::Key(mKeybinds.at("CLOSE")))) {

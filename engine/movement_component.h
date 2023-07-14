@@ -6,15 +6,16 @@
 namespace eng {
 class MovementComponent {
 private:
-    sf::Sprite *mSprite;
+    sf::Sprite &mSprite;
 
     float mMaxVelocity;
+    float mAcceleration;
+    float mDeceleration;
+
     sf::Vector2f mVelocity;
-    sf::Vector2f mAcceleration;
-    sf::Vector2f mDeceleration;
 
 public:
-    explicit MovementComponent(sf::Sprite &sprite, float maxVelocity);
+    explicit MovementComponent(sf::Sprite &sprite, float maxVelocity, float acceleration, float deceleration);
     virtual ~MovementComponent();
     /*
      * Getters
