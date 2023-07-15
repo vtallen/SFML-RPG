@@ -21,12 +21,20 @@ private:
     sf::Font *mFont;
     sf::Text mText;
 
+    sf::Color mTextIdleColor;
+    sf::Color mTextHoverColor;
+    sf::Color mTextActiveColor;
+
     sf::Color mIdleColor;
     sf::Color mHoverColor;
     sf::Color mActiveColor;
 
 public:
-    Button(float x, float y, float width, float height, sf::Font *font, std::string_view text, sf::Color idleColor, sf::Color hoverColor, sf::Color activeColor);
+    Button(float x, float y, float width, float height,
+           sf::Font *font, unsigned int characterSize, std::string_view text,
+           const sf::Color &textIdleColor, const sf::Color &textHoverColor, const sf::Color &textActiveColor,
+           const sf::Color &idleColor, const sf::Color &hoverColor, const sf::Color &activeColor);
+
     ~Button();
     /*
      * Getters
