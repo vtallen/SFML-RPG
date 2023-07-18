@@ -22,6 +22,7 @@ public:
      */
 
     [[nodiscard]] const sf::Vector2f &getVelocity() const;
+    bool isIdle() const;
 
     /*
      * Functions

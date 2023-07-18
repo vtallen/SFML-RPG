@@ -15,7 +15,7 @@ class Animation {
   sf::Sprite &mSprite;
 
   float mAnimationTimer{};
-  float mTimer{};
+  float mTimer{0.f};
 
   int mNumFrames{};
   int mFrameWidth{};
@@ -27,7 +27,7 @@ class Animation {
   sf::IntRect mEndRect;
 
 public:
-  Animation(sf::Sprite &sprite, float animationTimer, int startFrameX, int startFrameY,
+  Animation(sf::Sprite &sprite, float secondsPerFrame, int startFrameX, int startFrameY,
             int frameWidth, int frameHeight, int framePadding, int numFrames);
 
   virtual ~Animation();

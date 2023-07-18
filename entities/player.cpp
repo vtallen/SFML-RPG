@@ -11,7 +11,8 @@ Player::Player(const float x, const float y, sf::Texture &textureSheet) {
   Entity::createMovementComponent(600.f, 1200.f, 3000.f);
   Entity::createAnimationComponent(textureSheet);
 
-  mAnimationComponent->addAnimation("IDLE", 100.f, 16, 16, 16, 32, 16, 6);
+  mAnimationComponent->addAnimation("IDLE", 0.5, 16, 16, 16, 32, 32, 6);
+  mAnimationComponent->addAnimation("WALK_RIGHT", 0.2, 16, 210, 16, 32, 32, 6);
 
 }
 
@@ -28,7 +29,12 @@ Player::~Player() {
  */
 void Player::update(float dt) {
   Entity::update(dt);
-  mAnimationComponent->play("IDLE", dt);
+  if (mMovementComponent->isIdle()) {
+    mAnimationComponent->play("IDLE", dt);
+  } else {
+    mAnimationComponent->play("WALK_RIGHT", dt);
+  }
+
 }
 
 void Player::render(sf::RenderTarget *target) {
