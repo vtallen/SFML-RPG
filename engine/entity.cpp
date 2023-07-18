@@ -11,6 +11,7 @@ Entity::Entity() : mSprite{new sf::Sprite} {
 Entity::~Entity() {
     delete mSprite;
     delete mMovementComponent;
+    delete mAnimationComponent;
 }
 
 /*
@@ -24,6 +25,12 @@ void Entity::createMovementComponent(const float maxVelocity, const float accele
     assert(mSprite && "Entity::createMovementComponent - mSprite was nullptr");
 
     mMovementComponent = new MovementComponent(*mSprite, maxVelocity, acceleration, deceleration);
+}
+
+void Entity::createAnimationComponent(sf::Texture &textureSheet) {
+  assert(mSprite && "Entity::createAnimationComponent - mSprite was nullptr");
+
+  mAnimationComponent = new AnimationComponent{*mSprite, textureSheet};
 }
 
 /*

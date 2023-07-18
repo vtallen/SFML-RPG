@@ -41,7 +41,12 @@
 },
 {
   "directory": "/home/vtallen/Nextcloud/Programming/SFML/RPG/cmake-build-debug",
-  "command": "/usr/bin/c++  -std=c++20 -g -fdiagnostics-color=always -o CMakeFiles/RPG_ENGINE.dir/engine/movement_component.cpp.o -c /home/vtallen/Nextcloud/Programming/SFML/RPG/engine/movement_component.cpp",
-  "file": "/home/vtallen/Nextcloud/Programming/SFML/RPG/engine/movement_component.cpp"
+  "command": "/usr/bin/c++  -std=c++20 -g -fdiagnostics-color=always -o CMakeFiles/RPG_ENGINE.dir/engine/entity_components/movement_component.cpp.o -c /home/vtallen/Nextcloud/Programming/SFML/RPG/engine/entity_components/movement_component.cpp",
+  "file": "/home/vtallen/Nextcloud/Programming/SFML/RPG/engine/entity_components/movement_component.cpp"
+},
+{
+  "directory": "/home/vtallen/Nextcloud/Programming/SFML/RPG/cmake-build-debug",
+  "command": "/usr/bin/c++  -std=c++20 -g -fdiagnostics-color=always -o CMakeFiles/RPG_ENGINE.dir/engine/entity_components/animation_component.cpp.o -c /home/vtallen/Nextcloud/Programming/SFML/RPG/engine/entity_components/animation_component.cpp",
+  "file": "/home/vtallen/Nextcloud/Programming/SFML/RPG/engine/entity_components/animation_component.cpp"
 }
 ]

@@ -5,7 +5,8 @@
 #include <cassert>
 #include <iostream>
 
-#include "movement_component.h"
+#include "entity_components/movement_component.h"
+#include "entity_components/animation_component.h"
 
 namespace eng {
 class Entity {
@@ -15,6 +16,8 @@ protected:
     sf::Sprite *mSprite{nullptr};
 
     MovementComponent *mMovementComponent{nullptr};
+    AnimationComponent *mAnimationComponent{nullptr};
+
     float mMovementSpeed{};
 
 public:
@@ -29,6 +32,7 @@ public:
      */
     virtual void setTexture(sf::Texture &texture);
     virtual void createMovementComponent(float maxVelocity, float acceleration, float deceleration);
+    virtual void createAnimationComponent(sf::Texture &textureSheet);
 
     /*
      * Public functions
