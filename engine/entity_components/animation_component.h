@@ -27,6 +27,8 @@ class Animation {
   sf::IntRect mEndRect;
 
 public:
+
+
   Animation(sf::Sprite &sprite, float secondsPerFrame, int startFrameX, int startFrameY,
             int frameWidth, int frameHeight, int framePadding, int numFrames);
 

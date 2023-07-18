@@ -29,9 +29,9 @@ Player::~Player() {
  */
 void Player::update(float dt) {
   Entity::update(dt);
-  if (mMovementComponent->isIdle()) {
+  if (mMovementComponent->getIsMoving(MovementStates::IDLE)) {
     mAnimationComponent->play("IDLE", dt);
-  } else {
+  } else if (mMovementComponent->getIsMoving(MovementStates::RIGHT)){
     mAnimationComponent->play("WALK_RIGHT", dt);
   }
 
