@@ -21,7 +21,7 @@ const sf::Vector2f &MovementComponent::getVelocity() const {
     return mVelocity;
 }
 
-bool MovementComponent::getIsMoving(MovementStates state) {
+bool MovementComponent::getIsMoving(MovementStates state) const {
   switch (state) {
     case MovementStates::IDLE:
       return mVelocity.x == 0.f && mVelocity.y == 0.f;
@@ -44,7 +44,7 @@ bool MovementComponent::getIsMoving(MovementStates state) {
 }
 
 bool MovementComponent::isIdle() const {
-  return mVelocity.x == 0.f && mVelocity.y == 0.f;
+ return mVelocity.x == 0.f && mVelocity.y == 0.f;
 }
 
 bool MovementComponent::isMoving() const {

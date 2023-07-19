@@ -38,7 +38,7 @@ public:
 
   [[nodiscard]] const sf::Vector2f &getVelocity() const;
 
-  bool getIsMoving(MovementStates state);
+  bool getIsMoving(MovementStates state) const;
 
   [[nodiscard]] bool isIdle() const;
 

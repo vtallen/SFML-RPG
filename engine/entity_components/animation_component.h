@@ -12,6 +12,7 @@
 namespace eng {
 
 class Animation {
+private:
   sf::Sprite &mSprite;
 
   float mAnimationTimer{};
@@ -27,8 +28,6 @@ class Animation {
   sf::IntRect mEndRect;
 
 public:
-
-
   Animation(sf::Sprite &sprite, float secondsPerFrame, int startFrameX, int startFrameY,
             int frameWidth, int frameHeight, int framePadding, int numFrames);
 
@@ -44,10 +43,11 @@ public:
 class AnimationComponent {
 private:
   sf::Sprite &mSprite;
-
-  std::unordered_map<std::string, eng::Animation*> mAnimations;
+  Animation *mLastAnimation{nullptr};
+  std::unordered_map<std::string, eng::Animation *> mAnimations;
 
 public:
+
 
   AnimationComponent(sf::Sprite &sprite, sf::Texture &textureSheet);
 

@@ -40,17 +40,18 @@ void Animation::play(float dt) {
       mCurrentRect.left += mFrameWidth + mFramePadding;
     } else { // Reset rect
       mCurrentRect.left = mStartRect.left;
-      std::cout << '\n';
     }
-    std::cout << "Current Rect: " << mCurrentRect.left << " " << mCurrentRect.top << '\n';
     mSprite.setTextureRect(mCurrentRect);
   }
 }
 
 void Animation::reset() {
-  mTimer = 0.f;
+  // Here we are setting the timer to the time per frame so that when animations switch there is no pause between them
+  mTimer = mAnimationTimer;
   mCurrentRect = mStartRect;
 }
+
+
 
 /*
  * Animation Component
@@ -69,7 +70,20 @@ AnimationComponent::~AnimationComponent() {
 }
 
 void AnimationComponent::play(const std::string_view key, float dt) {
-  mAnimations[key.data()]->play(dt);
+
+  Animation *requestedAnim{mAnimations[key.data()]};
+
+  assert(requestedAnim && "AnimationComponent::play() - the requested animation was nullptr\n");
+
+  if (mLastAnimation != requestedAnim){
+    if (mLastAnimation != nullptr) {
+      mLastAnimation->reset();
+    }
+
+    mLastAnimation = requestedAnim;
+  }
+
+  requestedAnim->play(dt);
 }
 
 void AnimationComponent::addAnimation(std::string_view key, float animationTimer, int startFrameX, int startFrameY,
@@ -97,5 +111,6 @@ void AnimationComponent::pauseAnimation(std::string_view animation) {
 void AnimationComponent::resetAnimation(std::string_view animation) {
 
 }
+
 }
 
