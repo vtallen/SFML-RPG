@@ -8,13 +8,12 @@ private:
     /*
      * Init functions
      */
-    void initComponents();
 
 public:
     /*
      * Constructors / Destructors
      */
-    Player(float x, float y, sf::Texture *texture);
+    Player(float x, float y, sf::Texture &textureSheet);
 
     ~Player() override;
 
@@ -23,7 +22,7 @@ public:
      */
     void update(float dt) override;
 
-    void render(sf::RenderTarget *target) override;
+    void render(sf::RenderTarget &target) override;
 };
 
 

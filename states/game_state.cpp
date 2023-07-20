@@ -3,13 +3,14 @@
 /*
  * Constructors / Destructors
  */
-GameState::GameState(sf::RenderWindow *window, std::map<std::string, int> *supportedKeys, std::stack<State *> *states) :
+GameState::GameState(sf::RenderWindow &window, std::map<std::string, int> *supportedKeys, std::stack<State *> *states) :
         State{window, supportedKeys, states} {
 
     GameState::initKeybinds();
     initTextures();
 
-    mPlayer = new Player{10, 10, mTextures["PLAYER_IDLE"]};
+    assert(mTextures["PLAYER_IDLE"] && "GameState::GameState - PLAYER_IDLE sf::Texture is nullptr in mTextures");
+    mPlayer = new Player{10, 10, *mTextures["PLAYER_IDLE"]};
 
 }
 
@@ -58,15 +59,15 @@ void GameState::updateInput(const float dt) {
     assert(mPlayer && "GameState::updateInput - mPlayer was nullptr");
 
     if (sf::Keyboard::isKeyPressed(sf::Keyboard::Key(mKeybinds.at("MOVE_LEFT")))) {
-        mPlayer->move(dt, -1.f, 0.f);
+        mPlayer->move(-1.f, 0.f, dt);
     } else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Key(mKeybinds.at("MOVE_RIGHT")))) {
-        mPlayer->move(dt, 1.f, 0.f);
+        mPlayer->move(1.f, 0.f, dt);
     }
 
     if (sf::Keyboard::isKeyPressed(sf::Keyboard::Key(mKeybinds.at("MOVE_UP")))) {
-        mPlayer->move(dt, 0.f, -1.f);
+        mPlayer->move(0.f, -1.f, dt);
     } else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Key(mKeybinds.at("MOVE_DOWN")))) {
-        mPlayer->move(dt, 0.f, 1.f);
+        mPlayer->move(0.f, 1.f, dt);
     }
 
     if (sf::Keyboard::isKeyPressed(sf::Keyboard::Key(mKeybinds.at("CLOSE")))) {
@@ -81,8 +82,5 @@ void GameState::update(const float dt) {
 }
 
 void GameState::render() {
-    assert(mWindow &&
-                   "GameState::render() - Both mWindow and target are nullptr. Did you forget to set mWindow or pass in a target to render()?");
-
     mPlayer->render(mWindow);
 }

@@ -1,25 +1,23 @@
-#include "main_menu_state.h"
+#include "editor_state.h"
 
-MainMenuState::MainMenuState(sf::RenderWindow &window, std::map<std::string, int> *supportedKeys,
-                             std::stack<State *> *states) :
+EditorState::EditorState(sf::RenderWindow &window, std::map<std::string, int> *supportedKeys,
+                         std::stack<State *> *states) :
   State{window, supportedKeys, states} {
 
-
   initFonts();
-  MainMenuState::initKeybinds();
+  EditorState::initKeybinds();
   initButtons();
-  initBackground();
 }
 
-MainMenuState::~MainMenuState() {
+EditorState::~EditorState() {
   for (auto &button: mButtons) { delete button.second; }
 }
 
-void MainMenuState::initKeybinds() {
-  assert(mSupportedKeys && "MainMenuState::initKeybinds - mSupportedKeys was nullptr");
+void EditorState::initKeybinds() {
+  assert(mSupportedKeys && "EditorState::initKeybinds - mSupportedKeys was nullptr");
 
   // Here we are mapping an action to a key, this allows us to change the key for the action in the future.
-  std::ifstream ifs{"../config/main_menu_state_keybinds.ini"};
+  std::ifstream ifs{"../config/editor_state_keybinds.ini"};
 
   if (ifs.is_open()) {
     std::string action{};
@@ -30,19 +28,20 @@ void MainMenuState::initKeybinds() {
     }
 
   } else {
-    std::cout << "MainMenuState::initKeybinds() - Unable to open config/main_menu_state_keybinds.ini\n";
+    std::cout << "EditorState::initKeybinds() - Unable to open config/editor_state_keybinds.ini\n";
   }
 
   ifs.close();
 }
 
-void MainMenuState::initFonts() {
+void EditorState::initFonts() {
   if (!mFont.loadFromFile("../fonts/Minecraft.ttf")) {
-    std::cerr << "MainMenuState::initFonts() - Unable to load ../fonts/Minecraft.ttf\n";
+    std::cerr << "EditorState::initFonts() - Unable to load ../fonts/Minecraft.ttf\n";
   }
 }
 
-void MainMenuState::initButtons() {
+void EditorState::initButtons() {
+  /*
   mButtons["GAME_STATE_BTN"] = new gui::Button(100, 100, 150, 50,
                                                &mFont, 20, "New Game",
                                                sf::Color(255, 255, 255, 200),
@@ -79,31 +78,35 @@ void MainMenuState::initButtons() {
                                      sf::Color(70, 70, 70, 200),
                                      sf::Color(70, 70, 70, 100),
                                      sf::Color(70, 70, 70, 255));
-
+*/
 }
 
-void MainMenuState::initBackground() {
+/*
+void EditorState::initBackground() {
+  assert(mWindow && "EditorState::initBackground() - mWindow was nullptr");
 
   mBackground.setSize(
-    sf::Vector2f(static_cast<float>(mWindow.getSize().x), static_cast<float>(mWindow.getSize().y)));
+    sf::Vector2f(static_cast<float>(mWindow->getSize().x), static_cast<float>(mWindow->getSize().y)));
   mBackground.setFillColor(sf::Color::Black);
-  /*
-  mBackgroundTexture.loadFromFile("../textures/bg.jpg");
-  mBackground.setTexture(&mBackgroundTexture);
-   */
-}
 
-void MainMenuState::endState() {
-  std::cout << "MainMenuState::endState() called\n";
+ // mBackgroundTexture.loadFromFile("../textures/bg.jpg");
+  // mBackground.setTexture(&mBackgroundTexture);
+}
+*/
+
+void EditorState::endState() {
+  std::cout << "EditorState::endState() called\n";
   State::endState();
 }
 
-void MainMenuState::updateInput(float dt) {
-
+void EditorState::updateInput(float dt) {
+  if (sf::Keyboard::isKeyPressed(sf::Keyboard::Key(mKeybinds.at("CLOSE")))) {
+    endState();
+  }
 }
 
-void MainMenuState::updateButtons() {
-  assert(mStates && "MainMenuState::updateButtons() - mStates was nullptr");
+void EditorState::updateButtons() {
+  assert(mStates && "EditorState::updateButtons() - mStates was nullptr");
   /*
    * Updates all of the buttons in the state, and implements their functionality
    */
@@ -112,30 +115,25 @@ void MainMenuState::updateButtons() {
     button.second->update(mMousePosView);
   }
 
-  if (mButtons["GAME_STATE_BTN"]->isPressed()) {
-    mStates->push(new GameState{mWindow, mSupportedKeys, mStates});
-  } else if (mButtons["EDITOR"]->isPressed()) {
-    mStates->push(new EditorState{mWindow, mSupportedKeys, mStates});
-  } else if (mButtons["EXIT"]->isPressed()) {
-    endState();
-  }
 }
 
-void MainMenuState::update(float dt) {
+void EditorState::update(float dt) {
   updateMousePositions();
   updateInput(dt);
 
   updateButtons();
 }
 
-void MainMenuState::render() {
-  mWindow.draw(mBackground);
-  for (auto &button: mButtons) button.second->render(mWindow);
+void EditorState::render() {
 
+  // for (auto &button: mButtons) button.second->render(mWindow);
+
+  /*
   sf::Text mouseText;
   mouseText.setPosition(mMousePosView);
   mouseText.setFont(mFont);
   mouseText.setCharacterSize(30);
   mouseText.setString(std::to_string(mMousePosView.x) + ", " + std::to_string(mMousePosView.y));
-  mWindow.draw(mouseText);
+  mWindow->draw(mouseText);
+   */
 }

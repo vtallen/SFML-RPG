@@ -5,7 +5,22 @@ set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++20")
 
 set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
 
-set(SOURCE_FILES main.cpp game.cpp game.h engine/state.h states/game_state.cpp states/game_state.h engine/state.cpp engine/entity.cpp engine/entity.h states/main_menu_state.cpp states/main_menu_state.h engine/button.cpp engine/button.h entities/player.cpp entities/player.h)
+set(SOURCE_FILES
+        main.cpp
+        game.cpp game.h
+
+        engine/state.cpp engine/state.h
+        states/game_state.cpp states/game_state.h
+        engine/entity.cpp engine/entity.h
+        states/main_menu_state.cpp states/main_menu_state.h
+
+        engine/button.cpp engine/button.h
+        entities/player.cpp entities/player.h
+        engine/entity_components/movement_component.cpp engine/entity_components/movement_component.h
+        engine/entity_components/animation_component.cpp engine/entity_components/animation_component.h
+
+        states/editor_state.cpp states/editor_state.h
+        engine/entity_components/hitbox_component.cpp engine/entity_components/hitbox_component.h engine/entity_components/hitbox_component.cpp)
 add_executable(RPG_ENGINE ${SOURCE_FILES})
 include_directories(/usr/local/include)
 

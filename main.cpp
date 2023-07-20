@@ -8,10 +8,13 @@
  * Add a way to conditionally compile debug statements
  * Add a better system for file names / where configs are stored
  * Logging
+ * Pass all render targets by reference
  *
  * BUGS:
  * FIND BETTER SOLUTION FOR STATE CLENUP, endState kinda sucks
  */
+
+
 int main() {
     Game game{};
     game.run();

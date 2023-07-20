@@ -24,7 +24,7 @@ class State {
 protected:
     std::stack<State*> *mStates;
 
-    sf::RenderWindow *mWindow;
+    sf::RenderWindow &mWindow;
     std::map<std::string, sf::Texture*> mTextures;
     bool mQuit{false};
 
@@ -40,7 +40,7 @@ protected:
     // Functions
     virtual void initKeybinds() = 0;
 public:
-    State(sf::RenderWindow *window, std::map<std::string, int> *supportedKeys, std::stack<State*> *states);
+    State(sf::RenderWindow &window, std::map<std::string, int> *supportedKeys, std::stack<State*> *states);
 
     virtual ~State(){};
 
