@@ -36,7 +36,7 @@ public:
     /*
      * Constructors / Destructors
      */
-    GameState(sf::RenderWindow *window, std::map<std::string, int> *supportedKeys, std::stack<State*> *states);
+    GameState(sf::RenderWindow &window, std::map<std::string, int> *supportedKeys, std::stack<State*> *states);
     ~GameState() override;
 
     // Do any cleanup needed for the state

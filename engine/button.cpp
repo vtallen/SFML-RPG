@@ -78,10 +78,9 @@ void Button::update(const sf::Vector2f &mousePos) {
   }
 }
 
-void Button::render(sf::RenderTarget *target) {
-  assert(target && "Button::render - target was nullptr");
+void Button::render(sf::RenderTarget &target) {
 
-  target->draw(mShape);
-  target->draw(mText);
+  target.draw(mShape);
+  target.draw(mText);
 }
 }

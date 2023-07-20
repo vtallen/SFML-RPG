@@ -8,12 +8,13 @@ Player::Player(const float x, const float y, sf::Texture &textureSheet) {
   // mSprite->setTextureRect(sf::IntRect(16.f, 16.f, 16, 32));
   mSprite->scale(sf::Vector2f(5.f, 5.f));
 
+  Entity::createHitboxComponenet(*mSprite, 10, 35, 65.f, 90.f);
   Entity::createMovementComponent(140.f, 1400.f, 1000.f);
   Entity::createAnimationComponent(textureSheet);
 
   mAnimationComponent->addAnimation("IDLE", 0.5, 16, 16, 16, 32, 32, 6);
-  mAnimationComponent->addAnimation("WALK_RIGHT", 0.2, 16, 209, 16, 32, 32, 6);
-  mAnimationComponent->addAnimation("WALK_UP", 0.2, 16, 260, 16, 32, 32, 6);
+  mAnimationComponent->addAnimation("WALK_RIGHT", 0.2, 16, 208, 16, 32, 32, 6);
+  mAnimationComponent->addAnimation("WALK_UP", 0.2, 16, 256, 16, 32, 32, 6);
 
 }
 
@@ -27,7 +28,9 @@ Player::~Player() = default;
  * Public functions
  */
 void Player::update(float dt) {
-  Entity::update(dt);
+  mMovementComponent->update(dt);
+  mHitboxComponent->update();
+
   if (mMovementComponent->isIdle()) {
     mAnimationComponent->play("IDLE", dt);
   } else if (mMovementComponent->isMovingRight()) {
@@ -37,6 +40,7 @@ void Player::update(float dt) {
   }
 }
 
-void Player::render(sf::RenderTarget *target) {
+void Player::render(sf::RenderTarget &target) {
   Entity::render(target);
+  mHitboxComponent->render(target);
 }

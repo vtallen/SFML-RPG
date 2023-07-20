@@ -3,7 +3,7 @@
 /*
  * Constructors / Destructors
  */
-GameState::GameState(sf::RenderWindow *window, std::map<std::string, int> *supportedKeys, std::stack<State *> *states) :
+GameState::GameState(sf::RenderWindow &window, std::map<std::string, int> *supportedKeys, std::stack<State *> *states) :
         State{window, supportedKeys, states} {
 
     GameState::initKeybinds();
@@ -82,8 +82,5 @@ void GameState::update(const float dt) {
 }
 
 void GameState::render() {
-    assert(mWindow &&
-                   "GameState::render() - Both mWindow and target are nullptr. Did you forget to set mWindow or pass in a target to render()?");
-
     mPlayer->render(mWindow);
 }

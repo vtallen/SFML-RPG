@@ -20,7 +20,7 @@ set(SOURCE_FILES
         engine/entity_components/animation_component.cpp engine/entity_components/animation_component.h
 
         states/editor_state.cpp states/editor_state.h
-        )
+        engine/entity_components/hitbox_component.cpp engine/entity_components/hitbox_component.h engine/entity_components/hitbox_component.cpp)
 add_executable(RPG_ENGINE ${SOURCE_FILES})
 include_directories(/usr/local/include)
 

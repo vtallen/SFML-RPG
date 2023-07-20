@@ -22,7 +22,7 @@ public:
      */
     void update(float dt) override;
 
-    void render(sf::RenderTarget *target) override;
+    void render(sf::RenderTarget &target) override;
 };
 
 

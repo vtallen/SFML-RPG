@@ -1,10 +1,8 @@
 #include "editor_state.h"
 
-EditorState::EditorState(sf::RenderWindow *window, std::map<std::string, int> *supportedKeys,
+EditorState::EditorState(sf::RenderWindow &window, std::map<std::string, int> *supportedKeys,
                          std::stack<State *> *states) :
   State{window, supportedKeys, states} {
-
-  assert(window && "EditorState::EditorState() - window was passed in as nullptr");
 
   initFonts();
   EditorState::initKeybinds();
@@ -30,7 +28,7 @@ void EditorState::initKeybinds() {
     }
 
   } else {
-    std::cout << "EditorState::initKeybinds() - Unable to open config/main_menu_state_keybinds.ini\n";
+    std::cout << "EditorState::initKeybinds() - Unable to open config/editor_state_keybinds.ini\n";
   }
 
   ifs.close();
@@ -43,6 +41,7 @@ void EditorState::initFonts() {
 }
 
 void EditorState::initButtons() {
+  /*
   mButtons["GAME_STATE_BTN"] = new gui::Button(100, 100, 150, 50,
                                                &mFont, 20, "New Game",
                                                sf::Color(255, 255, 255, 200),
@@ -79,7 +78,7 @@ void EditorState::initButtons() {
                                      sf::Color(70, 70, 70, 200),
                                      sf::Color(70, 70, 70, 100),
                                      sf::Color(70, 70, 70, 255));
-
+*/
 }
 
 /*
@@ -101,7 +100,9 @@ void EditorState::endState() {
 }
 
 void EditorState::updateInput(float dt) {
-
+  if (sf::Keyboard::isKeyPressed(sf::Keyboard::Key(mKeybinds.at("CLOSE")))) {
+    endState();
+  }
 }
 
 void EditorState::updateButtons() {
@@ -114,13 +115,6 @@ void EditorState::updateButtons() {
     button.second->update(mMousePosView);
   }
 
-  if (mButtons["GAME_STATE_BTN"]->isPressed()) {
-    mStates->push(new GameState{mWindow, mSupportedKeys, mStates});
-  }
-
-  if (mButtons["EXIT"]->isPressed()) {
-    endState();
-  }
 }
 
 void EditorState::update(float dt) {
@@ -131,16 +125,15 @@ void EditorState::update(float dt) {
 }
 
 void EditorState::render() {
-  assert(mWindow && "EditorState::render() - mWindow was nullptr");
-  for (auto &button: mButtons) button.second->render(mWindow);
 
+  // for (auto &button: mButtons) button.second->render(mWindow);
+
+  /*
   sf::Text mouseText;
   mouseText.setPosition(mMousePosView);
   mouseText.setFont(mFont);
   mouseText.setCharacterSize(30);
   mouseText.setString(std::to_string(mMousePosView.x) + ", " + std::to_string(mMousePosView.y));
   mWindow->draw(mouseText);
+   */
 }
-
-
-

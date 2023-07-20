@@ -53,5 +53,10 @@
   "directory": "/home/vtallen/Nextcloud/Programming/SFML/RPG/cmake-build-debug",
   "command": "/usr/bin/c++  -std=c++20 -g -fdiagnostics-color=always -o CMakeFiles/RPG_ENGINE.dir/states/editor_state.cpp.o -c /home/vtallen/Nextcloud/Programming/SFML/RPG/states/editor_state.cpp",
   "file": "/home/vtallen/Nextcloud/Programming/SFML/RPG/states/editor_state.cpp"
+},
+{
+  "directory": "/home/vtallen/Nextcloud/Programming/SFML/RPG/cmake-build-debug",
+  "command": "/usr/bin/c++  -std=c++20 -g -fdiagnostics-color=always -o CMakeFiles/RPG_ENGINE.dir/engine/entity_components/hitbox_component.cpp.o -c /home/vtallen/Nextcloud/Programming/SFML/RPG/engine/entity_components/hitbox_component.cpp",
+  "file": "/home/vtallen/Nextcloud/Programming/SFML/RPG/engine/entity_components/hitbox_component.cpp"
 }
 ]

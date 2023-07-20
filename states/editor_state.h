@@ -25,7 +25,7 @@ private:
   std::map<std::string, gui::Button*> mButtons;
 
 public:
-  EditorState(sf::RenderWindow *window, std::map<std::string, int> *supportedKeys, std::stack<State*> *states);
+  EditorState(sf::RenderWindow &window, std::map<std::string, int> *supportedKeys, std::stack<State*> *states);
   ~EditorState() override;
 
 private:

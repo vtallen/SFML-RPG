@@ -13,6 +13,7 @@
 #include "../engine/button.h"
 
 #include "../states/game_state.h"
+#include "editor_state.h"
 
 class MainMenuState : public eng::State {
 private:
@@ -27,7 +28,7 @@ private:
     std::map<std::string, gui::Button*> mButtons;
 
 public:
-    MainMenuState(sf::RenderWindow *window, std::map<std::string, int> *supportedKeys, std::stack<State*> *states);
+    MainMenuState(sf::RenderWindow &window, std::map<std::string, int> *supportedKeys, std::stack<State*> *states);
     ~MainMenuState() override;
 
 private:

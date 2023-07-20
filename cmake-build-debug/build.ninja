@@ -115,6 +115,12 @@ build CMakeFiles/RPG_ENGINE.dir/states/editor_state.cpp.o: CXX_COMPILER__RPG_ENG
   OBJECT_DIR = CMakeFiles/RPG_ENGINE.dir
   OBJECT_FILE_DIR = CMakeFiles/RPG_ENGINE.dir/states
 
+build CMakeFiles/RPG_ENGINE.dir/engine/entity_components/hitbox_component.cpp.o: CXX_COMPILER__RPG_ENGINE_Debug /home/vtallen/Nextcloud/Programming/SFML/RPG/engine/entity_components/hitbox_component.cpp || cmake_object_order_depends_target_RPG_ENGINE
+  DEP_FILE = CMakeFiles/RPG_ENGINE.dir/engine/entity_components/hitbox_component.cpp.o.d
+  FLAGS = -std=c++20 -g -fdiagnostics-color=always
+  OBJECT_DIR = CMakeFiles/RPG_ENGINE.dir
+  OBJECT_FILE_DIR = CMakeFiles/RPG_ENGINE.dir/engine/entity_components
+
 
 # =============================================================================
 # Link build statements for EXECUTABLE target RPG_ENGINE
@@ -123,7 +129,7 @@ build CMakeFiles/RPG_ENGINE.dir/states/editor_state.cpp.o: CXX_COMPILER__RPG_ENG
 #############################################
 # Link the executable RPG_ENGINE
 
-build RPG_ENGINE: CXX_EXECUTABLE_LINKER__RPG_ENGINE_Debug CMakeFiles/RPG_ENGINE.dir/main.cpp.o CMakeFiles/RPG_ENGINE.dir/game.cpp.o CMakeFiles/RPG_ENGINE.dir/engine/state.cpp.o CMakeFiles/RPG_ENGINE.dir/states/game_state.cpp.o CMakeFiles/RPG_ENGINE.dir/engine/entity.cpp.o CMakeFiles/RPG_ENGINE.dir/states/main_menu_state.cpp.o CMakeFiles/RPG_ENGINE.dir/engine/button.cpp.o CMakeFiles/RPG_ENGINE.dir/entities/player.cpp.o CMakeFiles/RPG_ENGINE.dir/engine/entity_components/movement_component.cpp.o CMakeFiles/RPG_ENGINE.dir/engine/entity_components/animation_component.cpp.o CMakeFiles/RPG_ENGINE.dir/states/editor_state.cpp.o | /usr/local/lib/libsfml-graphics-d.so.2.6.0 /usr/local/lib/libsfml-audio-d.so.2.6.0 /usr/local/lib/libsfml-network-d.so.2.6.0 /usr/local/lib/libsfml-window-d.so.2.6.0 /usr/local/lib/libsfml-system-d.so.2.6.0
+build RPG_ENGINE: CXX_EXECUTABLE_LINKER__RPG_ENGINE_Debug CMakeFiles/RPG_ENGINE.dir/main.cpp.o CMakeFiles/RPG_ENGINE.dir/game.cpp.o CMakeFiles/RPG_ENGINE.dir/engine/state.cpp.o CMakeFiles/RPG_ENGINE.dir/states/game_state.cpp.o CMakeFiles/RPG_ENGINE.dir/engine/entity.cpp.o CMakeFiles/RPG_ENGINE.dir/states/main_menu_state.cpp.o CMakeFiles/RPG_ENGINE.dir/engine/button.cpp.o CMakeFiles/RPG_ENGINE.dir/entities/player.cpp.o CMakeFiles/RPG_ENGINE.dir/engine/entity_components/movement_component.cpp.o CMakeFiles/RPG_ENGINE.dir/engine/entity_components/animation_component.cpp.o CMakeFiles/RPG_ENGINE.dir/states/editor_state.cpp.o CMakeFiles/RPG_ENGINE.dir/engine/entity_components/hitbox_component.cpp.o | /usr/local/lib/libsfml-graphics-d.so.2.6.0 /usr/local/lib/libsfml-audio-d.so.2.6.0 /usr/local/lib/libsfml-network-d.so.2.6.0 /usr/local/lib/libsfml-window-d.so.2.6.0 /usr/local/lib/libsfml-system-d.so.2.6.0
   FLAGS = -std=c++20 -g
   LINK_LIBRARIES = -Wl,-rpath,/usr/local/lib  /usr/local/lib/libsfml-graphics-d.so.2.6.0  /usr/local/lib/libsfml-audio-d.so.2.6.0  /usr/local/lib/libsfml-network-d.so.2.6.0  /usr/local/lib/libsfml-window-d.so.2.6.0  /usr/local/lib/libsfml-system-d.so.2.6.0
   OBJECT_DIR = CMakeFiles/RPG_ENGINE.dir
