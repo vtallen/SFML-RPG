@@ -38,6 +38,8 @@ public:
 
   [[nodiscard]] const sf::Vector2f &getVelocity() const;
 
+  float getMaxVelocity();
+
   bool getIsMoving(MovementStates state) const;
 
   [[nodiscard]] bool isIdle() const;

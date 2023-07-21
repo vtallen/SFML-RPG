@@ -5,6 +5,16 @@
 
 class Player : public eng::Entity {
 private:
+  enum class Direction {
+    LEFT,
+    RIGHT,
+    UP,
+    DOWN,
+  };
+
+  Direction mLastDirection{Direction::DOWN};
+
+  bool mIsAttacking{false};
     /*
      * Init functions
      */

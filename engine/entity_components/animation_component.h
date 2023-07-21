@@ -15,8 +15,9 @@ class Animation {
 private:
   sf::Sprite &mSprite;
 
-  float mAnimationTimer{};
+  float mSecondsPerFrame{};
   float mTimer{0.f};
+  bool mIsDone{true};
 
   int mNumFrames{};
   int mFrameWidth{};
@@ -33,7 +34,8 @@ public:
 
   virtual ~Animation();
 
-  void play(float dt);
+  bool play(float dt, float speedModifierPercent);
+  bool play(float dt);
 
   void pause();
 
@@ -44,6 +46,8 @@ class AnimationComponent {
 private:
   sf::Sprite &mSprite;
   Animation *mLastAnimation{nullptr};
+  Animation *mPriorityAnimation{nullptr};
+
   std::unordered_map<std::string, eng::Animation *> mAnimations;
 
 public:
@@ -66,8 +70,8 @@ public:
 
   void resetAnimation(std::string_view animation);
 
-  void play(std::string_view key, float dt);
-
+  void play(std::string_view key, float dt, bool priority);
+  void play (std::string_view key, float dt, float speedModifier, float speedModifierMax, bool priority);
 };
 }
 #endif

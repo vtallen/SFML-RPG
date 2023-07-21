@@ -5,7 +5,7 @@
  * Constructor / Destructor
  */
 
-Game::Game() {
+Game::Game(std::string_view rootDir) : mRootDir{rootDir} {
     initWindow();
     initKeys();
     initStates();
@@ -26,7 +26,7 @@ Game::~Game() {
  * Init functions
  */
 void Game::initWindow() {
-    std::ifstream ifs("../config/window.ini");
+    std::ifstream ifs(mRootDir + "../config/window.ini");
     mVideoModes = sf::VideoMode::getFullscreenModes();
 
     sf::VideoMode windowBounds{sf::VideoMode::getDesktopMode()};
@@ -65,7 +65,7 @@ void Game::initStates() {
 
 void Game::initKeys() {
     // Here we are creating a mapping of strings to the correct key in the sf::Keyboard::Key enum.
-    std::ifstream ifs{"../config/supported_keys.ini"};
+    std::ifstream ifs{mRootDir + "../config/supported_keys.ini"};
 
     if (ifs.is_open()) {
         std::string key{};
@@ -157,7 +157,5 @@ void Game::render() {
 
     mWindow->display();
 }
-
-
 
 #pragma clang diagnostic pop

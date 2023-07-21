@@ -21,6 +21,10 @@ const sf::Vector2f &MovementComponent::getVelocity() const {
     return mVelocity;
 }
 
+float MovementComponent::getMaxVelocity() {
+  return mMaxVelocity;
+}
+
 bool MovementComponent::getIsMoving(MovementStates state) const {
   switch (state) {
     case MovementStates::IDLE:

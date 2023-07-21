@@ -7,6 +7,7 @@
 #include <fstream>
 #include <sstream>
 #include <string>
+#include <string_view>
 #include <map>
 
 #include "engine/state.h"
@@ -18,6 +19,10 @@ private:
     /*
      * Variables
      */
+
+    // The directory where all game files will be stored
+    std::string mRootDir{};
+
     // Window variables
     sf::RenderWindow *mWindow{nullptr};
     std::vector<sf::VideoMode> mVideoModes;
@@ -32,8 +37,9 @@ private:
     sf::Clock mDtClock;
     float mDt{0.f};
 
-    // Keybindings
+    // Keys supported by the game
     std::map<std::string, int> mSupportedKeys;
+
     /*
      * Update / Render Functions
      */
@@ -57,7 +63,7 @@ public:
     /*
      * Constructor / Destructors
      */
-    Game();
+    Game(std::string_view rootDir);
     virtual ~Game();
 
     void run();
