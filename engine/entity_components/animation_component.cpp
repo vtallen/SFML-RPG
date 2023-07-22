@@ -27,11 +27,22 @@ Animation::~Animation() {
 
 }
 
+/*
+ * Animation - Getters
+ */
+
+bool Animation::isDone() const {
+  return mIsDone;
+}
+
+/*
+ * Animation - Functions
+ */
 // speedModifierCurrent and speedModifierMax are used to calculate a percentage, and play the animation
 // at that percentage of the max speed
 bool Animation::play(float dt, float speedModifierPercent) {
   // Update timer
-  bool done = false;
+  mIsDone = false;
   mTimer += speedModifierPercent * dt;
 
   if (mTimer >= mSecondsPerFrame) {
@@ -44,14 +55,14 @@ bool Animation::play(float dt, float speedModifierPercent) {
     if (mCurrentRect.left < mEndRect.left) {
       mCurrentRect.left += mFrameWidth + mFramePadding;
     } else { // Reset rect
-      done = true;
       mCurrentRect.left = mStartRect.left;
-
+      mIsDone = true;
     }
     mSprite.setTextureRect(mCurrentRect);
+
   }
 
-  return done;
+  return mIsDone;
 }
 
 bool Animation::play(float dt) {
@@ -82,62 +93,12 @@ AnimationComponent::~AnimationComponent() {
   for (auto &i: mAnimations) delete i.second;
 }
 
-void AnimationComponent::play(const std::string_view key, float dt, const bool priority) {
-
-  /*
-  if (mLastAnimation != requestedAnim) {
-    if (mLastAnimation != nullptr) {
-      mLastAnimation->reset();
-    }
-
-    mLastAnimation = requestedAnim;
-  }
-
-  requestedAnim->play(dt, priority);
-   */
-  play(key, dt, 1.f, 1.f, priority);
-}
-
-void AnimationComponent::play(std::string_view key, const float dt, const float speedModifier, const float speedModifierMax,
-                         const bool priority) {
-  Animation *requestedAnim{mAnimations[key.data()]};
-  float speedModifierPercent{speedModifier / speedModifierMax};
-
-  assert(requestedAnim && "AnimationComponent::play() - the requested animation was nullptr\n");
-
-  if (mPriorityAnimation) { // if there is a priority animation to play
-    if (mPriorityAnimation == requestedAnim) {
-      if (mLastAnimation != requestedAnim) {
-
-        // if we are changing animations, then the previous animation needs
-        // to be reset
-        if (mLastAnimation != nullptr) {
-          mLastAnimation->reset();
-        }
-
-        mLastAnimation = requestedAnim;
-      }
-
-      // if the priority animation is done, remove it
-      if (requestedAnim->play(dt, speedModifierPercent)) {
-        mPriorityAnimation = nullptr;
-      }
-    }
-  } else { // Play the requested animation if there is no priority animation
-    if (priority) {
-      mPriorityAnimation = requestedAnim;
-    }
-
-    if (mLastAnimation != requestedAnim) {
-      if (mLastAnimation != nullptr) {
-        mLastAnimation->reset();
-      }
-
-      mLastAnimation = requestedAnim;
-    }
-
-    requestedAnim->play(dt, speedModifierPercent);
-  }
+/*
+ * Animation Component - Getters and Setters
+ */
+bool AnimationComponent::isDone(std::string_view key) {
+  assert(mAnimations.contains(key.data()) && "AnimationComponent::isDone - Animation does not exist in mAnimations");
+  return mAnimations[key.data()]->isDone();
 }
 
 void AnimationComponent::addAnimation(std::string_view key, float animationTimer, int startFrameX, int startFrameY,
@@ -155,6 +116,52 @@ void AnimationComponent::addAnimation(std::string_view key, float animationTimer
   }
 #endif
 }
+
+/*
+ * Animation Component - Functions
+ */
+bool AnimationComponent::play(const std::string_view key, float dt, const bool priority) {
+  return play(key, dt, 1.f, 1.f, priority);
+}
+
+bool AnimationComponent::play(std::string_view key, const float dt, const float speedModifier, const float speedModifierMax,
+                         const bool priority) {
+  Animation *requestedAnim{mAnimations[key.data()]};
+  float speedModifierPercent{speedModifier / speedModifierMax};
+
+  assert(requestedAnim && "AnimationComponent::play() - the requested animation was nullptr\n");
+  if (mPriorityAnimation) { // if there is a priority animation to play, then play it and ignore the requested animation
+    if (mLastAnimation != mPriorityAnimation) {
+      if (mLastAnimation != nullptr) {
+        mLastAnimation->reset();
+      }
+
+      mLastAnimation = mPriorityAnimation;
+    }
+
+   if (mPriorityAnimation->play(dt, speedModifierPercent)) {
+     mPriorityAnimation = nullptr;
+   }
+
+  } else { // Play the requested animation if there is no priority animation
+    if (priority) {
+      mPriorityAnimation = requestedAnim;
+    }
+
+    if (mLastAnimation != requestedAnim) {
+      if (mLastAnimation != nullptr) {
+        mLastAnimation->reset();
+      }
+
+      mLastAnimation = requestedAnim;
+    }
+
+    requestedAnim->play(dt, speedModifierPercent);
+  }
+
+  return requestedAnim->isDone();
+}
+
 
 void AnimationComponent::startAnimation(std::string_view animation) {
 

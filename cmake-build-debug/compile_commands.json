@@ -31,8 +31,8 @@
 },
 {
   "directory": "/home/vtallen/Nextcloud/Programming/SFML/RPG/cmake-build-debug",
-  "command": "/usr/bin/c++  -std=c++20 -g -fdiagnostics-color=always -o CMakeFiles/RPG_ENGINE.dir/engine/button.cpp.o -c /home/vtallen/Nextcloud/Programming/SFML/RPG/engine/button.cpp",
-  "file": "/home/vtallen/Nextcloud/Programming/SFML/RPG/engine/button.cpp"
+  "command": "/usr/bin/c++  -std=c++20 -g -fdiagnostics-color=always -o CMakeFiles/RPG_ENGINE.dir/engine/gui/button.cpp.o -c /home/vtallen/Nextcloud/Programming/SFML/RPG/engine/gui/button.cpp",
+  "file": "/home/vtallen/Nextcloud/Programming/SFML/RPG/engine/gui/button.cpp"
 },
 {
   "directory": "/home/vtallen/Nextcloud/Programming/SFML/RPG/cmake-build-debug",
@@ -58,5 +58,10 @@
   "directory": "/home/vtallen/Nextcloud/Programming/SFML/RPG/cmake-build-debug",
   "command": "/usr/bin/c++  -std=c++20 -g -fdiagnostics-color=always -o CMakeFiles/RPG_ENGINE.dir/engine/entity_components/hitbox_component.cpp.o -c /home/vtallen/Nextcloud/Programming/SFML/RPG/engine/entity_components/hitbox_component.cpp",
   "file": "/home/vtallen/Nextcloud/Programming/SFML/RPG/engine/entity_components/hitbox_component.cpp"
+},
+{
+  "directory": "/home/vtallen/Nextcloud/Programming/SFML/RPG/cmake-build-debug",
+  "command": "/usr/bin/c++  -std=c++20 -g -fdiagnostics-color=always -o CMakeFiles/RPG_ENGINE.dir/engine/tile/tile.cpp.o -c /home/vtallen/Nextcloud/Programming/SFML/RPG/engine/tile/tile.cpp",
+  "file": "/home/vtallen/Nextcloud/Programming/SFML/RPG/engine/tile/tile.cpp"
 }
 ]

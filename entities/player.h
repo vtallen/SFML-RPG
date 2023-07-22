@@ -6,15 +6,21 @@
 class Player : public eng::Entity {
 private:
   enum class Direction {
+    NONE,
     LEFT,
     RIGHT,
     UP,
     DOWN,
   };
 
+  /*
+   * State variables
+   */
   Direction mLastDirection{Direction::DOWN};
+  Direction mLastAttackDirection{Direction::NONE};
 
   bool mIsAttacking{false};
+
     /*
      * Init functions
      */
@@ -30,6 +36,8 @@ public:
     /*
      * Public functions
      */
+    void updateAttack();
+    void updateAnimation(float dt);
     void update(float dt) override;
 
     void render(sf::RenderTarget &target) override;

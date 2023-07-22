@@ -14,13 +14,13 @@ set(SOURCE_FILES
         engine/entity.cpp engine/entity.h
         states/main_menu_state.cpp states/main_menu_state.h
 
-        engine/button.cpp engine/button.h
+        engine/gui/button.cpp engine/gui/button.h
         entities/player.cpp entities/player.h
         engine/entity_components/movement_component.cpp engine/entity_components/movement_component.h
         engine/entity_components/animation_component.cpp engine/entity_components/animation_component.h
 
         states/editor_state.cpp states/editor_state.h
-        engine/entity_components/hitbox_component.cpp engine/entity_components/hitbox_component.h engine/entity_components/hitbox_component.cpp)
+        engine/entity_components/hitbox_component.cpp engine/entity_components/hitbox_component.h engine/entity_components/hitbox_component.cpp engine/tile/tile.cpp engine/tile/tile.h)
 add_executable(RPG_ENGINE ${SOURCE_FILES})
 include_directories(/usr/local/include)
 

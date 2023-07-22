@@ -17,7 +17,7 @@ private:
 
   float mSecondsPerFrame{};
   float mTimer{0.f};
-  bool mIsDone{true};
+  bool mIsDone{false};
 
   int mNumFrames{};
   int mFrameWidth{};
@@ -33,11 +33,16 @@ public:
             int frameWidth, int frameHeight, int framePadding, int numFrames);
 
   virtual ~Animation();
+  /*
+   * Animation - Getters and setters
+   */
+  [[nodiscard]] bool isDone() const;
 
+  /*
+   * Animation - Functions
+   */
   bool play(float dt, float speedModifierPercent);
   bool play(float dt);
-
-  void pause();
 
   void reset();
 };
@@ -60,9 +65,14 @@ public:
   /*
    * Getters / Setters
    */
+  bool isDone(std::string_view key);
 
   void addAnimation(std::string_view key, float animationTimer, int startFrameX, int startFrameY,
                     int frameWidth, int frameHeight, int framePadding, int numFrames);
+
+  /*
+   * Functions
+   */
 
   void startAnimation(std::string_view animation);
 
@@ -70,8 +80,8 @@ public:
 
   void resetAnimation(std::string_view animation);
 
-  void play(std::string_view key, float dt, bool priority);
-  void play (std::string_view key, float dt, float speedModifier, float speedModifierMax, bool priority);
+  bool play(std::string_view key, float dt, bool priority);
+  bool play (std::string_view key, float dt, float speedModifier, float speedModifierMax, bool priority);
 };
 }
 #endif

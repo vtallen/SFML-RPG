@@ -7,9 +7,14 @@ HitboxComponent::HitboxComponent(sf::Sprite &sprite, float offsetX, float offset
   mHitbox.setPosition(mSprite.getPosition().x + mOffsetX, mSprite.getPosition().y + mOffsetY);
   mHitbox.setSize(sf::Vector2f(width, height));
 
+  // Show hitboxes when in debug builds
+#ifdef SFML_DEBUG
   mHitbox.setFillColor(sf::Color::Transparent);
   mHitbox.setOutlineColor(sf::Color::Red);
   mHitbox.setOutlineThickness(1.f);
+#endif
+
+  
 }
 
 HitboxComponent::~HitboxComponent() {}
@@ -24,6 +29,8 @@ void HitboxComponent::update() {
 }
 
 void HitboxComponent::render(sf::RenderTarget &target) {
+#ifdef SFML_DEBUG
   target.draw(mHitbox);
+#endif
 }
 }

@@ -10,9 +10,7 @@ MovementComponent::MovementComponent(sf::Sprite &sprite, const float maxVelocity
 
 }
 
-MovementComponent::~MovementComponent() {
-
-}
+MovementComponent::~MovementComponent() = default;
 
 /*
  * Getters
@@ -70,8 +68,6 @@ bool MovementComponent::isMovingUp() const {
 bool MovementComponent::isMovingDown() const {
   return mVelocity.y > 0.f;
 }
-
-
 
 void MovementComponent::move(const float x, const float y, const float dt) {
     mVelocity.x += mAcceleration * x;
@@ -137,6 +133,7 @@ void MovementComponent::update(const float dt) {
     }
 
     // Final move
+
     mSprite.move(mVelocity.x * dt, mVelocity.y * dt);
 }
 }

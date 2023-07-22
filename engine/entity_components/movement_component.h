@@ -25,6 +25,9 @@ private:
 
   sf::Vector2f mVelocity;
 
+  // This is the last direction the object was moved with the move() function.
+  MovementStates mLastMovement;
+
 public:
 
 
@@ -38,21 +41,21 @@ public:
 
   [[nodiscard]] const sf::Vector2f &getVelocity() const;
 
-  float getMaxVelocity();
+  [[nodiscard]] float getMaxVelocity();
 
-  bool getIsMoving(MovementStates state) const;
+  [[nodiscard]] bool getIsMoving(MovementStates state) const;
 
   [[nodiscard]] bool isIdle() const;
 
-  bool isMoving() const;
+  [[nodiscard]] bool isMoving() const;
 
-  bool isMovingLeft() const;
+  [[nodiscard]] bool isMovingLeft() const;
 
-  bool isMovingRight() const;
+  [[nodiscard]] bool isMovingRight() const;
 
-  bool isMovingUp() const;
+  [[nodiscard]] bool isMovingUp() const;
 
-  bool isMovingDown() const;
+  [[nodiscard]] bool isMovingDown() const;
 
   /*
    * Functions

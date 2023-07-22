@@ -10,7 +10,7 @@
 #include <fstream>
 
 #include "../engine/state.h"
-#include "../engine/button.h"
+#include "../engine/gui/button.h"
 
 #include "../states/game_state.h"
 #include "editor_state.h"
