@@ -5,6 +5,8 @@
 
 #include <iostream>
 
+
+namespace eng {
 enum class MovementStates {
   IDLE = 0,
   MOVING,
@@ -14,7 +16,6 @@ enum class MovementStates {
   DOWN,
 };
 
-namespace eng {
 class MovementComponent {
 private:
   sf::Sprite &mSprite;
@@ -38,7 +39,6 @@ public:
   /*
    * Getters
    */
-
   [[nodiscard]] const sf::Vector2f &getVelocity() const;
 
   [[nodiscard]] float getMaxVelocity();

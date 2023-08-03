@@ -2,18 +2,19 @@
 
 namespace gui {
 // TODO This constructor should be considered a war crime, fix later
-// TODO need to enable the text color changing
 Button::Button(float x, float y, float width, float height,
                sf::Font *font, unsigned int characterSize, std::string_view text,
                const sf::Color &textIdleColor, const sf::Color &textHoverColor, const sf::Color &textActiveColor,
-               const sf::Color &idleColor, const sf::Color &hoverColor, const sf::Color &activeColor) :
+               const sf::Color &idleColor, const sf::Color &hoverColor, const sf::Color &activeColor, short unsigned id)
+  :
   mFont{font},
   mTextIdleColor{textIdleColor},
   mTextHoverColor{textHoverColor},
   mTextActiveColor{textActiveColor},
   mIdleColor{idleColor},
   mActiveColor{activeColor},
-  mHoverColor{hoverColor} {
+  mHoverColor{hoverColor},
+  mId{id} {
   assert(mFont && "Button::Button() - the passed in font was nullptr");
 
   mState = ButtonStates::IDLE;
@@ -32,6 +33,9 @@ Button::Button(float x, float y, float width, float height,
 
 }
 
+Button::Button(float x, float y, float width, float height, sf::Font *font, unsigned int characterSize) {
+}
+
 Button::~Button() {
 
 }
@@ -41,6 +45,64 @@ Button::~Button() {
  */
 bool Button::isPressed() const {
   return mState == ButtonStates::ACTIVE;
+}
+
+std::string Button::getText() {
+  return mText.getString();
+}
+
+short unsigned Button::getId() const {
+  return mId;
+}
+
+const sf::Vector2f &Button::getPosition() {
+  return mShape.getPosition();
+}
+
+/*
+ * Setters
+ */
+void Button::setText(std::string_view text) {
+  mText.setString(text.data());
+}
+
+void Button::setId(unsigned short id) {
+  mId = id;
+}
+
+void Button::setPosition(float x, float y) {
+  mShape.setPosition(x, y);
+  mText.setPosition(x + (mShape.getSize().x - mText.getGlobalBounds().width) / 2.f,
+                    y + (mShape.getSize().y - mText.getGlobalBounds().height) / 2.5);
+}
+
+void Button::setPosition(const sf::Vector2f &position) {
+  setPosition(position.x, position.y);
+}
+
+
+
+void Button::setTextColor(const sf::Color &idleColor, const sf::Color &hoverColor, const sf::Color &activeColor) {
+  mIdleColor = idleColor;
+  mHoverColor = hoverColor;
+  mActiveColor = activeColor;
+}
+
+void Button::setButtonColor(const sf::Color &idleColor, const sf::Color &hoverColor, const sf::Color &activeColor) {
+  mTextIdleColor = idleColor;
+  mTextHoverColor = hoverColor;
+  mTextActiveColor = activeColor;
+}
+
+void Button::setOutlineColor(const sf::Color &idleColor, const sf::Color &hoverColor, const sf::Color &activeColor) {
+  mShape.setOutlineThickness(5.f);
+  mOutlineIdleColor = idleColor;
+  mOutlineHoverColor = hoverColor;
+  mOutlineActiveColor = activeColor;
+}
+
+void Button::setOutlineThickness(float thickness) {
+  mShape.setOutlineThickness(thickness);
 }
 
 /*
@@ -63,14 +125,17 @@ void Button::update(const sf::Vector2f &mousePos) {
     case IDLE:
       mShape.setFillColor(mIdleColor);
       mText.setFillColor(mTextIdleColor);
+      mShape.setOutlineColor(mOutlineIdleColor);
       break;
     case HOVER:
       mShape.setFillColor(mHoverColor);
       mText.setFillColor(mTextHoverColor);
+      mShape.setOutlineColor(mOutlineHoverColor);
       break;
     case ACTIVE:
       mShape.setFillColor(mActiveColor);
       mText.setFillColor(mTextActiveColor);
+      mShape.setOutlineColor(mOutlineActiveColor);
       break;
     default:
       std::cout << "Button::update - Enum ButtonStates not fully handled in switch\n";
@@ -79,7 +144,6 @@ void Button::update(const sf::Vector2f &mousePos) {
 }
 
 void Button::render(sf::RenderTarget &target) {
-
   target.draw(mShape);
   target.draw(mText);
 }

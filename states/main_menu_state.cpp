@@ -1,4 +1,5 @@
 #include "main_menu_state.h"
+#include "settings_state.h"
 
 MainMenuState::MainMenuState(sf::RenderWindow &window, std::map<std::string, int> *supportedKeys,
                              std::stack<State *> *states) :
@@ -103,7 +104,7 @@ void MainMenuState::updateInput(float dt) {
 }
 
 void MainMenuState::updateButtons() {
-  assert(mStates && "MainMenuState::updateButtons() - mStates was nullptr");
+  assert(mStates && "MainMenuState::updateGUI() - mStates was nullptr");
   /*
    * Updates all of the buttons in the state, and implements their functionality
    */
@@ -114,6 +115,8 @@ void MainMenuState::updateButtons() {
 
   if (mButtons["GAME_STATE_BTN"]->isPressed()) {
     mStates->push(new GameState{mWindow, mSupportedKeys, mStates});
+  } else if (mButtons["SETTINGS"]->isPressed()) {
+    mStates->push(new SettingsState{mWindow, mSupportedKeys, mStates});
   } else if (mButtons["EDITOR"]->isPressed()) {
     mStates->push(new EditorState{mWindow, mSupportedKeys, mStates});
   } else if (mButtons["EXIT"]->isPressed()) {

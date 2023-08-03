@@ -106,7 +106,7 @@ void EditorState::updateInput(float dt) {
 }
 
 void EditorState::updateButtons() {
-  assert(mStates && "EditorState::updateButtons() - mStates was nullptr");
+  assert(mStates && "EditorState::updateGUI() - mStates was nullptr");
   /*
    * Updates all of the buttons in the state, and implements their functionality
    */

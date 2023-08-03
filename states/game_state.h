@@ -17,34 +17,47 @@
 
 #include "../entities/player.h"
 
+#include "../gui/pause_menu.h"
+
 class GameState : public eng::State {
 private:
-    Player *mPlayer;
+  sf::Font mFont;
 
-    /*
-     * Update functions
-     */
-    void updateInput(float dt) override;
+  PauseMenu *mPauseMenu;
+  float mInputKeyTimer{};
 
-    /*
-     * Init functions
-     */
-    void initKeybinds() override;
-    void initTextures();
+  Player *mPlayer{nullptr};
+
+  /*
+   * Private Update functions
+   */
+  void updatePlayerInput(float dt);
+  void updateInput(float dt) override;
+
+  /*
+   * Init functions
+   */
+  void initKeybinds() override;
+
+  void initTextures();
+
+  void initFonts();
 
 public:
-    /*
-     * Constructors / Destructors
-     */
-    GameState(sf::RenderWindow &window, std::map<std::string, int> *supportedKeys, std::stack<State*> *states);
-    ~GameState() override;
+  /*
+   * Constructors / Destructors
+   */
+  GameState(sf::RenderWindow &window, std::map<std::string, int> *supportedKeys, std::stack<State *> *states);
 
-    // Do any cleanup needed for the state
-    void endState() override;
+  ~GameState() override;
+
+  // Do any cleanup needed for the state
+  void endState() override;
 
 
-    void update(float dt) override;
-    void render() override;
+  void update(float dt) override;
+
+  void render() override;
 };
 
 #endif

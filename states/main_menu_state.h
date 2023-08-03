@@ -20,7 +20,6 @@ private:
     /*
      * Vars
      */
-
     sf::Texture mBackgroundTexture;
     sf::RectangleShape mBackground;
     sf::Font mFont;

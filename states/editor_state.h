@@ -1,7 +1,7 @@
 #ifndef EDITOR_STATE_H
 #define EDITOR_STATE_H
 
-#include <SFML/Graphics.hpp>
+#include <pch.h>
 
 #include <iostream>
 #include <cassert>

@@ -38,7 +38,6 @@ Player::~Player() = default;
  */
 void Player::updateAttack() {
   if (sf::Keyboard::isKeyPressed(sf::Keyboard::Key::J)) {
-    std::cout << "Attack pressed\n";
     mLastAttackDirection = mLastDirection;
     mIsAttacking = true;
   }

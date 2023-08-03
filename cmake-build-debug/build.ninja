@@ -51,79 +51,120 @@ build cmake_object_order_depends_target_RPG_ENGINE: phony || CMakeFiles/RPG_ENGI
 
 build CMakeFiles/RPG_ENGINE.dir/main.cpp.o: CXX_COMPILER__RPG_ENGINE_Debug /home/vtallen/Nextcloud/Programming/SFML/RPG/main.cpp || cmake_object_order_depends_target_RPG_ENGINE
   DEP_FILE = CMakeFiles/RPG_ENGINE.dir/main.cpp.o.d
-  FLAGS = -std=c++20 -g -fdiagnostics-color=always
+  FLAGS = -std=c++20 -g -fdiagnostics-color=always -std=gnu++20
+  INCLUDES = -I/home/vtallen/Nextcloud/Programming/SFML/RPG
   OBJECT_DIR = CMakeFiles/RPG_ENGINE.dir
   OBJECT_FILE_DIR = CMakeFiles/RPG_ENGINE.dir
 
 build CMakeFiles/RPG_ENGINE.dir/game.cpp.o: CXX_COMPILER__RPG_ENGINE_Debug /home/vtallen/Nextcloud/Programming/SFML/RPG/game.cpp || cmake_object_order_depends_target_RPG_ENGINE
   DEP_FILE = CMakeFiles/RPG_ENGINE.dir/game.cpp.o.d
-  FLAGS = -std=c++20 -g -fdiagnostics-color=always
+  FLAGS = -std=c++20 -g -fdiagnostics-color=always -std=gnu++20
+  INCLUDES = -I/home/vtallen/Nextcloud/Programming/SFML/RPG
   OBJECT_DIR = CMakeFiles/RPG_ENGINE.dir
   OBJECT_FILE_DIR = CMakeFiles/RPG_ENGINE.dir
 
 build CMakeFiles/RPG_ENGINE.dir/engine/state.cpp.o: CXX_COMPILER__RPG_ENGINE_Debug /home/vtallen/Nextcloud/Programming/SFML/RPG/engine/state.cpp || cmake_object_order_depends_target_RPG_ENGINE
   DEP_FILE = CMakeFiles/RPG_ENGINE.dir/engine/state.cpp.o.d
-  FLAGS = -std=c++20 -g -fdiagnostics-color=always
+  FLAGS = -std=c++20 -g -fdiagnostics-color=always -std=gnu++20
+  INCLUDES = -I/home/vtallen/Nextcloud/Programming/SFML/RPG
   OBJECT_DIR = CMakeFiles/RPG_ENGINE.dir
   OBJECT_FILE_DIR = CMakeFiles/RPG_ENGINE.dir/engine
 
 build CMakeFiles/RPG_ENGINE.dir/states/game_state.cpp.o: CXX_COMPILER__RPG_ENGINE_Debug /home/vtallen/Nextcloud/Programming/SFML/RPG/states/game_state.cpp || cmake_object_order_depends_target_RPG_ENGINE
   DEP_FILE = CMakeFiles/RPG_ENGINE.dir/states/game_state.cpp.o.d
-  FLAGS = -std=c++20 -g -fdiagnostics-color=always
+  FLAGS = -std=c++20 -g -fdiagnostics-color=always -std=gnu++20
+  INCLUDES = -I/home/vtallen/Nextcloud/Programming/SFML/RPG
   OBJECT_DIR = CMakeFiles/RPG_ENGINE.dir
   OBJECT_FILE_DIR = CMakeFiles/RPG_ENGINE.dir/states
 
 build CMakeFiles/RPG_ENGINE.dir/engine/entity.cpp.o: CXX_COMPILER__RPG_ENGINE_Debug /home/vtallen/Nextcloud/Programming/SFML/RPG/engine/entity.cpp || cmake_object_order_depends_target_RPG_ENGINE
   DEP_FILE = CMakeFiles/RPG_ENGINE.dir/engine/entity.cpp.o.d
-  FLAGS = -std=c++20 -g -fdiagnostics-color=always
+  FLAGS = -std=c++20 -g -fdiagnostics-color=always -std=gnu++20
+  INCLUDES = -I/home/vtallen/Nextcloud/Programming/SFML/RPG
   OBJECT_DIR = CMakeFiles/RPG_ENGINE.dir
   OBJECT_FILE_DIR = CMakeFiles/RPG_ENGINE.dir/engine
 
 build CMakeFiles/RPG_ENGINE.dir/states/main_menu_state.cpp.o: CXX_COMPILER__RPG_ENGINE_Debug /home/vtallen/Nextcloud/Programming/SFML/RPG/states/main_menu_state.cpp || cmake_object_order_depends_target_RPG_ENGINE
   DEP_FILE = CMakeFiles/RPG_ENGINE.dir/states/main_menu_state.cpp.o.d
-  FLAGS = -std=c++20 -g -fdiagnostics-color=always
+  FLAGS = -std=c++20 -g -fdiagnostics-color=always -std=gnu++20
+  INCLUDES = -I/home/vtallen/Nextcloud/Programming/SFML/RPG
   OBJECT_DIR = CMakeFiles/RPG_ENGINE.dir
   OBJECT_FILE_DIR = CMakeFiles/RPG_ENGINE.dir/states
 
 build CMakeFiles/RPG_ENGINE.dir/engine/gui/button.cpp.o: CXX_COMPILER__RPG_ENGINE_Debug /home/vtallen/Nextcloud/Programming/SFML/RPG/engine/gui/button.cpp || cmake_object_order_depends_target_RPG_ENGINE
   DEP_FILE = CMakeFiles/RPG_ENGINE.dir/engine/gui/button.cpp.o.d
-  FLAGS = -std=c++20 -g -fdiagnostics-color=always
+  FLAGS = -std=c++20 -g -fdiagnostics-color=always -std=gnu++20
+  INCLUDES = -I/home/vtallen/Nextcloud/Programming/SFML/RPG
   OBJECT_DIR = CMakeFiles/RPG_ENGINE.dir
   OBJECT_FILE_DIR = CMakeFiles/RPG_ENGINE.dir/engine/gui
 
 build CMakeFiles/RPG_ENGINE.dir/entities/player.cpp.o: CXX_COMPILER__RPG_ENGINE_Debug /home/vtallen/Nextcloud/Programming/SFML/RPG/entities/player.cpp || cmake_object_order_depends_target_RPG_ENGINE
   DEP_FILE = CMakeFiles/RPG_ENGINE.dir/entities/player.cpp.o.d
-  FLAGS = -std=c++20 -g -fdiagnostics-color=always
+  FLAGS = -std=c++20 -g -fdiagnostics-color=always -std=gnu++20
+  INCLUDES = -I/home/vtallen/Nextcloud/Programming/SFML/RPG
   OBJECT_DIR = CMakeFiles/RPG_ENGINE.dir
   OBJECT_FILE_DIR = CMakeFiles/RPG_ENGINE.dir/entities
 
 build CMakeFiles/RPG_ENGINE.dir/engine/entity_components/movement_component.cpp.o: CXX_COMPILER__RPG_ENGINE_Debug /home/vtallen/Nextcloud/Programming/SFML/RPG/engine/entity_components/movement_component.cpp || cmake_object_order_depends_target_RPG_ENGINE
   DEP_FILE = CMakeFiles/RPG_ENGINE.dir/engine/entity_components/movement_component.cpp.o.d
-  FLAGS = -std=c++20 -g -fdiagnostics-color=always
+  FLAGS = -std=c++20 -g -fdiagnostics-color=always -std=gnu++20
+  INCLUDES = -I/home/vtallen/Nextcloud/Programming/SFML/RPG
   OBJECT_DIR = CMakeFiles/RPG_ENGINE.dir
   OBJECT_FILE_DIR = CMakeFiles/RPG_ENGINE.dir/engine/entity_components
 
 build CMakeFiles/RPG_ENGINE.dir/engine/entity_components/animation_component.cpp.o: CXX_COMPILER__RPG_ENGINE_Debug /home/vtallen/Nextcloud/Programming/SFML/RPG/engine/entity_components/animation_component.cpp || cmake_object_order_depends_target_RPG_ENGINE
   DEP_FILE = CMakeFiles/RPG_ENGINE.dir/engine/entity_components/animation_component.cpp.o.d
-  FLAGS = -std=c++20 -g -fdiagnostics-color=always
+  FLAGS = -std=c++20 -g -fdiagnostics-color=always -std=gnu++20
+  INCLUDES = -I/home/vtallen/Nextcloud/Programming/SFML/RPG
   OBJECT_DIR = CMakeFiles/RPG_ENGINE.dir
   OBJECT_FILE_DIR = CMakeFiles/RPG_ENGINE.dir/engine/entity_components
 
 build CMakeFiles/RPG_ENGINE.dir/states/editor_state.cpp.o: CXX_COMPILER__RPG_ENGINE_Debug /home/vtallen/Nextcloud/Programming/SFML/RPG/states/editor_state.cpp || cmake_object_order_depends_target_RPG_ENGINE
   DEP_FILE = CMakeFiles/RPG_ENGINE.dir/states/editor_state.cpp.o.d
-  FLAGS = -std=c++20 -g -fdiagnostics-color=always
+  FLAGS = -std=c++20 -g -fdiagnostics-color=always -std=gnu++20
+  INCLUDES = -I/home/vtallen/Nextcloud/Programming/SFML/RPG
   OBJECT_DIR = CMakeFiles/RPG_ENGINE.dir
   OBJECT_FILE_DIR = CMakeFiles/RPG_ENGINE.dir/states
 
 build CMakeFiles/RPG_ENGINE.dir/engine/entity_components/hitbox_component.cpp.o: CXX_COMPILER__RPG_ENGINE_Debug /home/vtallen/Nextcloud/Programming/SFML/RPG/engine/entity_components/hitbox_component.cpp || cmake_object_order_depends_target_RPG_ENGINE
   DEP_FILE = CMakeFiles/RPG_ENGINE.dir/engine/entity_components/hitbox_component.cpp.o.d
-  FLAGS = -std=c++20 -g -fdiagnostics-color=always
+  FLAGS = -std=c++20 -g -fdiagnostics-color=always -std=gnu++20
+  INCLUDES = -I/home/vtallen/Nextcloud/Programming/SFML/RPG
   OBJECT_DIR = CMakeFiles/RPG_ENGINE.dir
   OBJECT_FILE_DIR = CMakeFiles/RPG_ENGINE.dir/engine/entity_components
 
 build CMakeFiles/RPG_ENGINE.dir/engine/tile/tile.cpp.o: CXX_COMPILER__RPG_ENGINE_Debug /home/vtallen/Nextcloud/Programming/SFML/RPG/engine/tile/tile.cpp || cmake_object_order_depends_target_RPG_ENGINE
   DEP_FILE = CMakeFiles/RPG_ENGINE.dir/engine/tile/tile.cpp.o.d
-  FLAGS = -std=c++20 -g -fdiagnostics-color=always
+  FLAGS = -std=c++20 -g -fdiagnostics-color=always -std=gnu++20
+  INCLUDES = -I/home/vtallen/Nextcloud/Programming/SFML/RPG
+  OBJECT_DIR = CMakeFiles/RPG_ENGINE.dir
+  OBJECT_FILE_DIR = CMakeFiles/RPG_ENGINE.dir/engine/tile
+
+build CMakeFiles/RPG_ENGINE.dir/gui/pause_menu.cpp.o: CXX_COMPILER__RPG_ENGINE_Debug /home/vtallen/Nextcloud/Programming/SFML/RPG/gui/pause_menu.cpp || cmake_object_order_depends_target_RPG_ENGINE
+  DEP_FILE = CMakeFiles/RPG_ENGINE.dir/gui/pause_menu.cpp.o.d
+  FLAGS = -std=c++20 -g -fdiagnostics-color=always -std=gnu++20
+  INCLUDES = -I/home/vtallen/Nextcloud/Programming/SFML/RPG
+  OBJECT_DIR = CMakeFiles/RPG_ENGINE.dir
+  OBJECT_FILE_DIR = CMakeFiles/RPG_ENGINE.dir/gui
+
+build CMakeFiles/RPG_ENGINE.dir/states/settings_state.cpp.o: CXX_COMPILER__RPG_ENGINE_Debug /home/vtallen/Nextcloud/Programming/SFML/RPG/states/settings_state.cpp || cmake_object_order_depends_target_RPG_ENGINE
+  DEP_FILE = CMakeFiles/RPG_ENGINE.dir/states/settings_state.cpp.o.d
+  FLAGS = -std=c++20 -g -fdiagnostics-color=always -std=gnu++20
+  INCLUDES = -I/home/vtallen/Nextcloud/Programming/SFML/RPG
+  OBJECT_DIR = CMakeFiles/RPG_ENGINE.dir
+  OBJECT_FILE_DIR = CMakeFiles/RPG_ENGINE.dir/states
+
+build CMakeFiles/RPG_ENGINE.dir/engine/gui/combo_box.cpp.o: CXX_COMPILER__RPG_ENGINE_Debug /home/vtallen/Nextcloud/Programming/SFML/RPG/engine/gui/combo_box.cpp || cmake_object_order_depends_target_RPG_ENGINE
+  DEP_FILE = CMakeFiles/RPG_ENGINE.dir/engine/gui/combo_box.cpp.o.d
+  FLAGS = -std=c++20 -g -fdiagnostics-color=always -std=gnu++20
+  INCLUDES = -I/home/vtallen/Nextcloud/Programming/SFML/RPG
+  OBJECT_DIR = CMakeFiles/RPG_ENGINE.dir
+  OBJECT_FILE_DIR = CMakeFiles/RPG_ENGINE.dir/engine/gui
+
+build CMakeFiles/RPG_ENGINE.dir/engine/tile/tile_map.cpp.o: CXX_COMPILER__RPG_ENGINE_Debug /home/vtallen/Nextcloud/Programming/SFML/RPG/engine/tile/tile_map.cpp || cmake_object_order_depends_target_RPG_ENGINE
+  DEP_FILE = CMakeFiles/RPG_ENGINE.dir/engine/tile/tile_map.cpp.o.d
+  FLAGS = -std=c++20 -g -fdiagnostics-color=always -std=gnu++20
+  INCLUDES = -I/home/vtallen/Nextcloud/Programming/SFML/RPG
   OBJECT_DIR = CMakeFiles/RPG_ENGINE.dir
   OBJECT_FILE_DIR = CMakeFiles/RPG_ENGINE.dir/engine/tile
 
@@ -135,7 +176,7 @@ build CMakeFiles/RPG_ENGINE.dir/engine/tile/tile.cpp.o: CXX_COMPILER__RPG_ENGINE
 #############################################
 # Link the executable RPG_ENGINE
 
-build RPG_ENGINE: CXX_EXECUTABLE_LINKER__RPG_ENGINE_Debug CMakeFiles/RPG_ENGINE.dir/main.cpp.o CMakeFiles/RPG_ENGINE.dir/game.cpp.o CMakeFiles/RPG_ENGINE.dir/engine/state.cpp.o CMakeFiles/RPG_ENGINE.dir/states/game_state.cpp.o CMakeFiles/RPG_ENGINE.dir/engine/entity.cpp.o CMakeFiles/RPG_ENGINE.dir/states/main_menu_state.cpp.o CMakeFiles/RPG_ENGINE.dir/engine/gui/button.cpp.o CMakeFiles/RPG_ENGINE.dir/entities/player.cpp.o CMakeFiles/RPG_ENGINE.dir/engine/entity_components/movement_component.cpp.o CMakeFiles/RPG_ENGINE.dir/engine/entity_components/animation_component.cpp.o CMakeFiles/RPG_ENGINE.dir/states/editor_state.cpp.o CMakeFiles/RPG_ENGINE.dir/engine/entity_components/hitbox_component.cpp.o CMakeFiles/RPG_ENGINE.dir/engine/tile/tile.cpp.o | /usr/local/lib/libsfml-graphics-d.so.2.6.0 /usr/local/lib/libsfml-audio-d.so.2.6.0 /usr/local/lib/libsfml-network-d.so.2.6.0 /usr/local/lib/libsfml-window-d.so.2.6.0 /usr/local/lib/libsfml-system-d.so.2.6.0
+build RPG_ENGINE: CXX_EXECUTABLE_LINKER__RPG_ENGINE_Debug CMakeFiles/RPG_ENGINE.dir/main.cpp.o CMakeFiles/RPG_ENGINE.dir/game.cpp.o CMakeFiles/RPG_ENGINE.dir/engine/state.cpp.o CMakeFiles/RPG_ENGINE.dir/states/game_state.cpp.o CMakeFiles/RPG_ENGINE.dir/engine/entity.cpp.o CMakeFiles/RPG_ENGINE.dir/states/main_menu_state.cpp.o CMakeFiles/RPG_ENGINE.dir/engine/gui/button.cpp.o CMakeFiles/RPG_ENGINE.dir/entities/player.cpp.o CMakeFiles/RPG_ENGINE.dir/engine/entity_components/movement_component.cpp.o CMakeFiles/RPG_ENGINE.dir/engine/entity_components/animation_component.cpp.o CMakeFiles/RPG_ENGINE.dir/states/editor_state.cpp.o CMakeFiles/RPG_ENGINE.dir/engine/entity_components/hitbox_component.cpp.o CMakeFiles/RPG_ENGINE.dir/engine/tile/tile.cpp.o CMakeFiles/RPG_ENGINE.dir/gui/pause_menu.cpp.o CMakeFiles/RPG_ENGINE.dir/states/settings_state.cpp.o CMakeFiles/RPG_ENGINE.dir/engine/gui/combo_box.cpp.o CMakeFiles/RPG_ENGINE.dir/engine/tile/tile_map.cpp.o | /usr/local/lib/libsfml-graphics-d.so.2.6.0 /usr/local/lib/libsfml-audio-d.so.2.6.0 /usr/local/lib/libsfml-network-d.so.2.6.0 /usr/local/lib/libsfml-window-d.so.2.6.0 /usr/local/lib/libsfml-system-d.so.2.6.0
   FLAGS = -std=c++20 -g
   LINK_LIBRARIES = -Wl,-rpath,/usr/local/lib  /usr/local/lib/libsfml-graphics-d.so.2.6.0  /usr/local/lib/libsfml-audio-d.so.2.6.0  /usr/local/lib/libsfml-network-d.so.2.6.0  /usr/local/lib/libsfml-window-d.so.2.6.0  /usr/local/lib/libsfml-system-d.so.2.6.0
   OBJECT_DIR = CMakeFiles/RPG_ENGINE.dir

@@ -22,48 +22,56 @@
 namespace eng {
 class State {
 protected:
-    std::stack<State*> *mStates;
+  std::stack<State *> *mStates;
 
-    sf::RenderWindow &mWindow;
-    std::map<std::string, sf::Texture*> mTextures;
-    bool mQuit{false};
+  sf::RenderWindow &mWindow;
+  std::map<std::string, sf::Texture *> mTextures;
 
-    // Mouse position
-    sf::Vector2i mMousePosScreen;
-    sf::Vector2i mMousePosWindow;
-    sf::Vector2f  mMousePosView;
+  bool mQuit{false};
+  bool mIsPaused{false};
 
-    // resources
-    std::map<std::string, int> *mSupportedKeys;
-    std::map<std::string, int> mKeybinds;
+  // Mouse position
+  sf::Vector2i mMousePosScreen;
+  sf::Vector2i mMousePosWindow;
+  sf::Vector2f mMousePosView;
 
-    // Functions
-    virtual void initKeybinds() = 0;
+  // resources
+  std::map<std::string, int> *mSupportedKeys;
+  std::map<std::string, int> mKeybinds;
+
+  // Functions
+  virtual void initKeybinds() = 0;
+
 public:
-    State(sf::RenderWindow &window, std::map<std::string, int> *supportedKeys, std::stack<State*> *states);
+  State(sf::RenderWindow &window, std::map<std::string, int> *supportedKeys, std::stack<State *> *states);
 
-    virtual ~State(){};
+  virtual ~State() {};
 
-    /*
-     * Getters
-     */
-    [[nodiscard]] bool getQuit() const;
+  /*
+   * Getters
+   */
+  [[nodiscard]] bool getQuit() const;
 
+  [[nodiscard]] bool isPaused() const;
 
-    /*
-     * Functions
-     */
+  /*
+   * Functions
+   */
+  virtual void pauseState();
 
-    // Does any cleanup needed by the state such as saving
-    // This should be called before a state is deleted
+  virtual void unpauseState();
 
-    virtual void endState();
+  // Does any cleanup needed by the state such as saving
+  // This should be called before a state is deleted
+  virtual void endState();
 
-    virtual void updateMousePositions();
+  virtual void updateMousePositions();
 
-    virtual void updateInput(float dt) = 0;
-    virtual void update(float dt) = 0;
-    virtual void render() = 0;
+  virtual void updateInput(float dt) = 0;
+
+  virtual void update(float dt) = 0;
+
+  virtual void render() = 0;
 };
 }
 

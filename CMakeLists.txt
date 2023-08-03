@@ -5,6 +5,17 @@ set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++20")
 
 set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
 
+# Precompiled header
+
+
+set(PCH_HEADER "${CMAKE_SOURCE_DIR}/pch.h")  # Use pch.h for other platforms
+
+# Define a target for the precompiled header
+add_library(RPG_ENGINE_PCH INTERFACE)
+target_sources(RPG_ENGINE_PCH  INTERFACE ${PCH_HEADER})
+target_compile_features(RPG_ENGINE_PCH INTERFACE cxx_std_20)
+target_include_directories(RPG_ENGINE_PCH INTERFACE ${CMAKE_SOURCE_DIR})
+
 set(SOURCE_FILES
         main.cpp
         game.cpp game.h
@@ -20,10 +31,10 @@ set(SOURCE_FILES
         engine/entity_components/animation_component.cpp engine/entity_components/animation_component.h
 
         states/editor_state.cpp states/editor_state.h
-        engine/entity_components/hitbox_component.cpp engine/entity_components/hitbox_component.h engine/entity_components/hitbox_component.cpp engine/tile/tile.cpp engine/tile/tile.h)
+        engine/entity_components/hitbox_component.cpp engine/entity_components/hitbox_component.h engine/entity_components/hitbox_component.cpp engine/tile/tile.cpp engine/tile/tile.h gui/pause_menu.cpp gui/pause_menu.h states/settings_state.cpp states/settings_state.h engine/gui/combo_box.cpp engine/gui/combo_box.h engine/tile/tile_map.cpp engine/tile/tile_map.h pch.h)
 add_executable(RPG_ENGINE ${SOURCE_FILES})
 include_directories(/usr/local/include)
 
 find_package(SFML 2.5 COMPONENTS system window graphics network audio REQUIRED)
 include_directories(${SFML_INCLUDE_DIRS})
-target_link_libraries(RPG_ENGINE sfml-system sfml-window sfml-graphics sfml-audio sfml-network)
+target_link_libraries(RPG_ENGINE sfml-system sfml-window sfml-graphics sfml-audio sfml-network RPG_ENGINE_PCH)
