@@ -3,13 +3,7 @@
 
 #include <pch.h>
 
-#include <iostream>
-#include <cassert>
-#include <exception>
-#include <map>
-#include <string>
 #include <stack>
-#include <fstream>
 
 #include "../engine/state.h"
 #include "../engine/gui/button.h"

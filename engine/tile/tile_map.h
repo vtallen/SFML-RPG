@@ -1,11 +1,7 @@
 #ifndef TILE_MAP_H
 #define TILE_MAP_H
 
-#include <SFML/Graphics.hpp>
-
-#include <iostream>
-#include <vector>
-
+#include <pch.h>
 
 #include "tile.h"
 
@@ -17,10 +13,13 @@ private:
   unsigned int mNumLayers;
   sf::Vector2u mMaxSize;
 
-  std::vector<std::vector<std::vector<Tile*>>> mTileMap;
+  std::vector<std::vector<std::vector<Tile>>> mTileMap;
 public:
   TileMap();
   virtual ~TileMap();
+
+  void update();
+  void render(sf::RenderTarget &target);
 };
 }
 

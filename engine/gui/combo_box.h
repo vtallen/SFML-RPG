@@ -1,11 +1,7 @@
 #ifndef COMBO_BOX_H
 #define COMBO_BOX_H
 
-#include <SFML/Graphics.hpp>
-
-#include <vector>
-#include <string>
-#include <string_view>
+#include <pch.h>
 
 #include "button.h"
 

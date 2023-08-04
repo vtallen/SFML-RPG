@@ -1,12 +1,7 @@
 #ifndef PAUSE_MENU_H
 #define PAUSE_MENU_H
 
-#include <SFML/Graphics.hpp>
-
-#include <unordered_map>
-#include <iostream>
-#include <string>
-#include <string_view>
+#include <pch.h>
 
 #include "../engine/gui/button.h"
 

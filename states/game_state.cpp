@@ -117,13 +117,18 @@ void GameState::update(const float dt) {
       endState();
     }
   }
+
+  mTileMap.update();
 }
 
 void GameState::render() {
   assert(mPlayer && "GameState::render - mPlayer was nullptr");
   assert(mPauseMenu && "GameState::render - mPauseMenu was nullptr");
 
+  mTileMap.render(mWindow);
+
   mPlayer->render(mWindow);
+
 
   if (!mIsPaused) {
     // Code that only executes when the game is un-paused

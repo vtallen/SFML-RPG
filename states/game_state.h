@@ -4,16 +4,11 @@
 #ifndef GAMESTATE_H
 #define GAMESTATE_H
 
-#include <SFML/Graphics.hpp>
-
-#include <cassert>
-#include <iostream>
-#include <fstream>
-#include <string>
-#include <map>
+#include <pch.h>
 
 #include "../engine/state.h"
 #include "../engine/entity.h"
+#include "../engine/tile/tile_map.h"
 
 #include "../entities/player.h"
 
@@ -28,6 +23,7 @@ private:
 
   Player *mPlayer{nullptr};
 
+  eng::TileMap mTileMap;
   /*
    * Private Update functions
    */

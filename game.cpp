@@ -1,31 +1,39 @@
 #include "game.h"
+
 #pragma clang diagnostic push
 #pragma ide diagnostic ignored "NullDereference"
+
 /*
  * Constructor / Destructor
  */
 
 Game::Game(std::string_view rootDir) : mRootDir{rootDir} {
-    initWindow();
-    initKeys();
-    initStates();
-    mDtClock.restart();
+  initGraphicsSettings();
+  initWindow();
+  initKeys();
+  initStates();
+  mDtClock.restart();
 }
 
 Game::~Game() {
-    delete mWindow;
-    while (!mStates.empty()) {
-        mStates.top()->endState();
-        delete mStates.top();
-        mStates.pop();
-    }
-
+  delete mWindow;
+  while (!mStates.empty()) {
+    mStates.top()->endState();
+    delete mStates.top();
+    mStates.pop();
+  }
+  mGraphicsSettings.saveToFile("config/window.ini", mRootDir);
 }
 
 /*
  * Init functions
  */
+void Game::initGraphicsSettings() {
+  mGraphicsSettings.loadFromFile("config/window.ini", mRootDir);
+}
+
 void Game::initWindow() {
+  /*
     std::ifstream ifs(mRootDir + "../config/window.ini");
     mVideoModes = sf::VideoMode::getFullscreenModes();
 
@@ -45,41 +53,43 @@ void Game::initWindow() {
     }
 
     ifs.close();
-
     mWindowSettings.antialiasingLevel = antiAliasingLevel;
 
-    if (mIsFullscreen) {
-        mWindow = new sf::RenderWindow{windowBounds, title, sf::Style::Fullscreen, mWindowSettings};
-    } else {
-        mWindow = new sf::RenderWindow{windowBounds, title, sf::Style::Close | sf::Style::Titlebar, mWindowSettings};
-    }
+*/
+  if (mGraphicsSettings.isFullscreen) {
+    mWindow = new sf::RenderWindow{mGraphicsSettings.resolution, mGraphicsSettings.title, sf::Style::Fullscreen,
+                                   mGraphicsSettings.contextSettings};
+  } else {
+    mWindow = new sf::RenderWindow{mGraphicsSettings.resolution, mGraphicsSettings.title,
+                                   sf::Style::Close | sf::Style::Titlebar, mGraphicsSettings.contextSettings};
+  }
 
-    mWindow->setFramerateLimit(framerateLimit);
-    mWindow->setVerticalSyncEnabled(vSyncEnabled);
+  mWindow->setFramerateLimit(mGraphicsSettings.frameRateLimit);
+  mWindow->setVerticalSyncEnabled(mGraphicsSettings.vSyncEnabled);
 }
 
 void Game::initStates() {
-    mStates.push(new MainMenuState(*mWindow, &mSupportedKeys, &mStates));
-   // mStates.push(new GameState(mWindow, &mSupportedKeys));
+  mStates.push(new MainMenuState(*mWindow, &mSupportedKeys, &mStates));
+  // mStates.push(new GameState(mWindow, &mSupportedKeys));
 }
 
 void Game::initKeys() {
-    // Here we are creating a mapping of strings to the correct key in the sf::Keyboard::Key enum.
-    std::ifstream ifs{mRootDir + "../config/supported_keys.ini"};
+  // Here we are creating a mapping of strings to the correct key in the sf::Keyboard::Key enum.
+  std::ifstream ifs{mRootDir + "../config/supported_keys.ini"};
 
-    if (ifs.is_open()) {
-        std::string key{};
-        int keyValue{};
+  if (ifs.is_open()) {
+    std::string key{};
+    int keyValue{};
 
-        while (ifs >> key >> keyValue) {
-            mSupportedKeys[key] = keyValue;
-        }
-
-    } else {
-        std::cout << "Game::initKeys() - Unable to open config/supported_keys.ini\n";
+    while (ifs >> key >> keyValue) {
+      mSupportedKeys[key] = keyValue;
     }
 
-    ifs.close();
+  } else {
+    std::cout << "Game::initKeys() - Unable to open config/supported_keys.ini\n";
+  }
+
+  ifs.close();
 }
 
 /*
@@ -89,14 +99,14 @@ void Game::initKeys() {
  * MAIN LOOP, PROGRAM ENTRY POINT FROM MAIN
  */
 void Game::run() {
-    assert(mWindow && "Game::run() - mWindow was nullptr");
-    while (mWindow->isOpen()) {
-        updateDt();
-        update();
-        render();
-        // system("clear");
-        //std::cout << mDt << '\n';
-    }
+  assert(mWindow && "Game::run() - mWindow was nullptr");
+  while (mWindow->isOpen()) {
+    updateDt();
+    update();
+    render();
+    // system("clear");
+    //std::cout << mDt << '\n';
+  }
 }
 
 /*
@@ -106,56 +116,56 @@ void Game::run() {
  * Update functions
  */
 void Game::update() {
-    updateSFMLEvents();
+  updateSFMLEvents();
 
-    // Update the currently active state (the one on the top of the stack)
-    if (!mStates.empty()) {
-        mStates.top()->update(mDt);
+  // Update the currently active state (the one on the top of the stack)
+  if (!mStates.empty()) {
+    mStates.top()->update(mDt);
 
-        if (mStates.top()->getQuit()) {
-            delete mStates.top();
-            mStates.pop();
-        }
-    } else {
-        mWindow->close();
+    if (mStates.top()->getQuit()) {
+      delete mStates.top();
+      mStates.pop();
     }
+  } else {
+    mWindow->close();
+  }
 }
 
 /*
  * This function updates the mDt with the time it took to update and render 1 frame
  */
 void Game::updateDt() {
-    mDt = mDtClock.getElapsedTime().asSeconds();
-    mDtClock.restart();
+  mDt = mDtClock.getElapsedTime().asSeconds();
+  mDtClock.restart();
 }
 
 void Game::updateSFMLEvents() {
-    while (mWindow->pollEvent(mEv)) {
-        switch (mEv.type) {
-            case sf::Event::Closed:
-                mWindow->close();
-                break;
-            default:
-                break;
-        }
+  while (mWindow->pollEvent(mEv)) {
+    switch (mEv.type) {
+      case sf::Event::Closed:
+        mWindow->close();
+        break;
+      default:
+        break;
     }
+  }
 }
 
 /*
  * Render functions
  */
 void Game::render() {
-    std::string testStr{"test"};
-    assert(mWindow && "Game::render() - mWindow was nullptr");
-    mWindow->clear();
+  std::string testStr{"test"};
+  assert(mWindow && "Game::render() - mWindow was nullptr");
+  mWindow->clear();
 
-    // Renders the currently active state (the one on the top of the stack)
-    if (!mStates.empty()) {
+  // Renders the currently active state (the one on the top of the stack)
+  if (!mStates.empty()) {
 
-        mStates.top()->render();
-    }
+    mStates.top()->render();
+  }
 
-    mWindow->display();
+  mWindow->display();
 }
 
 #pragma clang diagnostic pop

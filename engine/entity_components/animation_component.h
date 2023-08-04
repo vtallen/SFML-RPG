@@ -1,13 +1,7 @@
 #ifndef ANIMATION_COMPONENT_H
 #define ANIMATION_COMPONENT_H
 
-#include <cassert>
-#include <iostream>
-#include <string>
-#include <string_view>
-#include <unordered_map>
-
-#include <SFML/Graphics.hpp>
+#include <pch.h>
 
 namespace eng {
 

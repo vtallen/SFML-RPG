@@ -10,11 +10,8 @@
 #ifndef STATE_H
 #define STATE_H
 
-#include <SFML/Graphics.hpp>
+#include <pch.h>
 
-#include <vector>
-#include <stack>
-#include <map>
 #include <stack>
 
 #include "entity.h"

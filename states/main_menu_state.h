@@ -1,13 +1,9 @@
 #ifndef MAIN_MENU_STATE_H
 #define MAIN_MENU_STATE_H
 
-#include <iostream>
-#include <cassert>
-#include <exception>
-#include <map>
-#include <string>
+#include <pch.h>
+
 #include <stack>
-#include <fstream>
 
 #include "../engine/state.h"
 #include "../engine/gui/button.h"

@@ -5,13 +5,7 @@
 #ifndef SETTINGS_STATE_H
 #define SETTINGS_STATE_H
 
-#include <SFML/Graphics.hpp>
-
-#include <iostream>
-#include <unordered_map>
-#include <map>
-#include <string_view>
-#include <string>
+#include <pch.h>
 
 #include "../engine/state.h"
 #include "../engine/gui/button.h"

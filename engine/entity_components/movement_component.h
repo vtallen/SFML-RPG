@@ -1,10 +1,7 @@
 #ifndef MOVEMENT_COMPONENT_H
 #define MOVEMENT_COMPONENT_H
 
-#include <SFML/Graphics.hpp>
-
-#include <iostream>
-
+#include <pch.h>
 
 namespace eng {
 enum class MovementStates {

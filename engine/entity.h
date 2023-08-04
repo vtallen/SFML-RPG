@@ -1,10 +1,7 @@
 #ifndef ENTITY_H
 #define ENTITY_H
 
-#include <SFML/Graphics.hpp>
-
-#include <cassert>
-#include <iostream>
+#include <pch.h>
 
 #include "entity_components/hitbox_component.h"
 #include "entity_components/movement_component.h"

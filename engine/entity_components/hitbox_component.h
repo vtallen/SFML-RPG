@@ -1,10 +1,7 @@
 #ifndef HITBOX_COMPONENT_H
 #define HITBOX_COMPONENT_H
 
-#include <SFML/Graphics.hpp>
-
-#include <cassert>
-#include <iostream>
+#include <pch.h>
 
 namespace eng {
 class HitboxComponent {
